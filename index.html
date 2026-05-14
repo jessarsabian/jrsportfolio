@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" x-data="portfolioLogic()" :class="darkMode ? 'dark' : ''">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessa Sabian | AI Automation Specialist</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        fantasy: { dark: '#0b0118', light: '#fcfaff', pink: '#ec4899', red: '#ef4444' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+        * {
+            cursor: auto;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            cursor: auto !important;
+            transition: background-color 0.5s ease; 
+            user-select: none; 
+        }
+
+        a, button, img, .cursor-pointer {
+            cursor: pointer !important;
+        }
+
+        [x-cloak] { 
+            display: none !important; 
+        }
+
+        .theme-bg { 
+            transition: all 0.5s ease; 
+            min-height: 100vh; 
+        }
+
+        .dark .theme-bg { 
+            background-color: #0b0118; 
+            background-image: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.10) 0%, transparent 35%), radial-gradient(circle at 85% 15%, rgba(239, 68, 68, 0.08) 0%, transparent 30%); 
+        }
+
+        .light .theme-bg { 
+            background-color: #fcfaff; 
+        }
+
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+
+        .light .glass { 
+            background: rgba(255, 255, 255, 0.7); 
+            border: 1px solid rgba(0, 0, 0, 0.05); 
+        }
+
+        #cursor-glow {
+            width: 700px;
+            height: 350px;
+            background: radial-gradient(ellipse at center,
+                rgba(236, 72, 153, 0.12) 0%,
+                rgba(239, 68, 68, 0.08) 35%,
+                rgba(236, 72, 153, 0.04) 55%,
+                transparent 78%);
+            border-radius: 50%;
+            filter: blur(40px);
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            transition:
+                width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                opacity 0.2s ease;
+        }
+
+        .cursor-clicking {
+            width: 520px !important;
+            height: 260px !important;
+            background: radial-gradient(ellipse at center,
+                rgba(239, 68, 68, 0.14) 0%,
+                rgba(236, 72, 153, 0.10) 40%,
+                transparent 78%) !important;
+        }
+
+        .gradient-text { 
+            background: linear-gradient(135deg, #ec4899 0%, #ef4444 45%, #8b5cf6 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .dark .gradient-text { 
+            background: linear-gradient(135deg, #ffffff 20%, #ec4899 45%, #ef4444 75%, #8b5cf6 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .hero-image-mask {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+
+        .image-container::-webkit-scrollbar { 
+            width: 4px; 
+        }
+
+        .image-container::-webkit-scrollbar-thumb { 
+            background: #ec4899; 
+            border-radius: 10px; 
+        }
+
+        .timeline-border { 
+            border-left: 2px solid rgba(34, 197, 94, 0.3); 
+        }
+
+        .click-ripple {
+            position: absolute; 
+            border-radius: 50%; 
+            background: rgba(239, 68, 68, 0.28);
+            transform: scale(0); 
+            animation: ripple 0.6s linear; 
+            pointer-events: none;
+        }
+
+        @keyframes ripple { 
+            to { 
+                transform: scale(4); 
+                opacity: 0; 
+            } 
+        }
+    /* Moving Tools Marquee */
+.marquee {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.marquee-track {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: scrollRight 35s linear infinite;
+    gap: 1rem;
+    will-change: transform;
+}
+
+.marquee-track > div {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes scrollRight {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.marquee-left {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.marquee-left-track {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: scrollLeft 35s linear infinite;
+    gap: 1rem;
+    will-change: transform;
+}
+
+.marquee-left-track > div {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.marquee-left:hover .marquee-left-track {
+    animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+</style>
+</head>
+
+<body class="theme-bg text-slate-800 dark:text-slate-200 antialiased overflow-x-hidden" :class="darkMode ? 'dark' : 'light'">
+
+    <div id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 py-6 px-6">
+        <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tighter dark:text-white text-slate-900">JESSA SABIAN</div>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-widest items-center">
+                <a href="#services" class="hover:text-purple-400 transition active:scale-90">Capabilities</a>
+                <a href="#experience" class="hover:text-purple-400 transition active:scale-90">Experience</a>
+                <a href="#works" class="hover:text-purple-400 transition active:scale-90">Systems</a>
+                <a href="#contact" class="hover:text-purple-400 transition active:scale-90">Contact</a>
+                <a href="#discovery-call" class="px-6 py-3 bg-pink-500 text-white font-bold rounded-full uppercase tracking-widest text-[10px] hover:bg-pink-400 transition active:scale-90 shadow-lg shadow-pink-500/20 whitespace-nowrap flex items-center justify-center">Book a Call</a>
+                <button @click="toggleTheme()" class="ml-4 w-10 h-10 rounded-xl border border-black/5 dark:border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white transition active:scale-75">
+                    <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-6">AI SYSTEMS & AUTOMATION</h2>
+                <h1 class="text-6xl md:text-8xl font-extrabold dark:text-white text-slate-900 leading-tight mb-8">
+                    AI SYSTEMS FOR <br><span class="gradient-text">SMART OPERATIONS</span>
+                </h1>
+                <p class="max-w-lg text-slate-500 dark:text-slate-400 text-lg mb-10 leading-relaxed">
+                    Automation workflows designed to streamline operations, accelerate processes, and support scalable business systems.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#works" class="px-8 py-4 bg-slate-900 dark:bg-white dark:text-black text-white font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300">View Systems</a>
+                    <a href="#discovery-call" class="px-8 py-4 border border-pink-500/30 font-bold rounded-full hover:bg-pink-500/10 active:scale-95 transition-all duration-300">Book a Call</a>
+                </div>
+            </div>
+            
+            <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
+                <div class="relative w-full max-w-lg">
+                    <div class="absolute inset-0 bg-pink-500/20 blur-[120px] rounded-full"></div>
+                    <img src="profile.png" alt="Jessa Sabian" class="relative z-10 w-full h-auto hero-image-mask grayscale-[5%] hover:grayscale-0 transition duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-20" data-aos="fade-up">Capabilities</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div data-aos="fade-up" class="glass p-10 rounded-[2.5rem] border-transparent hover:border-pink-500/50 transition active:scale-95 cursor-pointer">
+                    <i class="fas fa-robot text-pink-500 text-3xl mb-6"></i>
+                    <h3 class="text-2xl font-bold dark:text-white mb-4">AI Automation Systems</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Custom automation systems for lead flow, client communication, CRM updates, and operational efficiency.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100" class="glass p-10 rounded-[2.5rem] border-transparent hover:border-pink-500/50 transition active:scale-95 cursor-pointer">
+                    <i class="fas fa-chart-line text-indigo-500 text-3xl mb-6"></i>
+                    <h3 class="text-2xl font-bold dark:text-white mb-4">Ad Operations Support</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Campaign setup, backend tracking, reporting workflows, and scalable ad account operations.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="glass p-10 rounded-[2.5rem] border-transparent hover:border-pink-500/50 transition active:scale-95 cursor-pointer">
+                    <i class="fas fa-tasks text-purple-500 text-3xl mb-6"></i>
+                    <h3 class="text-2xl font-bold dark:text-white mb-4">Process Optimization</h3>
+                    <p class="text-slate-500 dark:text-slate-400">Structured systems for repetitive workflows, records management, and digital business operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section id="tools" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6" data-aos="fade-up">Tools I Work With</h2>
+            <p class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+                Platforms and systems used to build automation workflows, AI agents, data pipelines, and operational support systems.
+            </p>
+
+            <div class="marquee mt-10" data-aos="fade-up" data-aos-delay="200">
+    <div class="marquee-track">
+
+        <!-- Set 1 -->
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-robot text-pink-500"></i> n8n</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-bolt text-pink-500"></i> Zapier</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-gears text-pink-500"></i> Make.com</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-brain text-pink-500"></i> Google Gemini AI</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-code-branch text-pink-500"></i> OpenRouter</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-phone-volume text-pink-500"></i> Vapi AI</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-table text-pink-500"></i> Airtable</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-sheet-plastic text-pink-500"></i> Google Sheets</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fab fa-google-drive text-pink-500"></i> Google Drive</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-envelope text-pink-500"></i> Gmail</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fab fa-slack text-pink-500"></i> Slack</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-calendar text-pink-500"></i> Calendly</div>
+
+        <!-- Set 2 -->
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-robot text-pink-500"></i> n8n</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-bolt text-pink-500"></i> Zapier</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-gears text-pink-500"></i> Make.com</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-brain text-pink-500"></i> Google Gemini AI</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-code-branch text-pink-500"></i> OpenRouter</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-phone-volume text-pink-500"></i> Vapi AI</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-table text-pink-500"></i> Airtable</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-sheet-plastic text-pink-500"></i> Google Sheets</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fab fa-google-drive text-pink-500"></i> Google Drive</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-envelope text-pink-500"></i> Gmail</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fab fa-slack text-pink-500"></i> Slack</div>
+        <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><i class="fas fa-calendar text-pink-500"></i> Calendly</div>
+
+    </div>
+</div>
+
+            <!-- Second Row Moving Left -->
+            <div class="marquee-left mt-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="marquee-left-track">
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-database text-pink-500"></i> Supabase
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fab fa-google text-pink-500"></i> Google Docs
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-network-wired text-pink-500"></i> APIs
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-cloud text-pink-500"></i> Render
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fab fa-github text-pink-500"></i> GitHub
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-layer-group text-pink-500"></i> RAG Systems
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-comments text-pink-500"></i> AI Chatbots
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-calendar-check text-pink-500"></i> Scheduling Systems
+                    </div>
+
+                    <!-- Duplicate Full Set -->
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-database text-pink-500"></i> Supabase
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fab fa-google text-pink-500"></i> Google Docs
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-network-wired text-pink-500"></i> APIs
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-cloud text-pink-500"></i> Render
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fab fa-github text-pink-500"></i> GitHub
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-layer-group text-pink-500"></i> RAG Systems
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-comments text-pink-500"></i> AI Chatbots
+                    </div>
+
+                    <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm">
+                        <i class="fas fa-calendar-check text-pink-500"></i> Scheduling Systems
+                    </div>
+
+                </div>
+            </div>
+
+</div>
+</section>
+
+    <!-- Work Experience -->
+    <section id="experience" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-20 text-center">Work Experience</h2>
+            <div class="space-y-12 timeline-border pl-8 ml-4">
+                <div data-aos="fade-left">
+                    <span class="text-pink-500 font-bold text-xs uppercase tracking-widest">Feb 2025 – Oct 2025</span>
+                    <h3 class="text-2xl font-bold dark:text-white mt-2">Virtual Assistant — Upwork</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Supported Google Ads and backend operations for iGaming campaigns, including tracking workflows, website verification, deployment support, and campaign launch coordination.</p>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="100">
+                    <span class="text-pink-500 font-bold text-xs uppercase tracking-widest">Oct 2021 – March 2025</span>
+                    <h3 class="text-2xl font-bold dark:text-white mt-2">Data Entry Specialist — Eastwest BPO Inc.</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Managed high-volume data operations, record validation, CRM updates, and repetitive administrative processes with strong accuracy and consistency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6">Automation Systems</h2>
+            <p class="max-w-2xl text-slate-500 dark:text-slate-400 mb-20">
+                A collection of AI-powered workflows, no-code automations, and operational systems built to reduce manual work and improve execution.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="(project, index) in projects" :key="index">
+                    <div data-aos="zoom-in" @click="openModal(project)" class="glass p-4 rounded-[2.5rem] group cursor-pointer border-transparent hover:border-pink-500/50 transition-all duration-500 active:scale-95">
+                        <div class="relative overflow-hidden rounded-[1.8rem] aspect-video mb-6 bg-slate-200 dark:bg-slate-900">
+                            <img :src="project.images[0]" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
+                        </div>
+                        <div class="px-2 pb-4">
+                            <span class="inline-block px-3 py-1 rounded-full bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-pink-500/20 text-[10px] font-bold text-pink-500 uppercase tracking-widest" x-text="project.tool"></span>
+                            <h3 class="text-xl font-bold dark:text-white text-slate-900 mt-3" x-text="project.title"></h3>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA After Projects -->
+    <section id="project-cta" class="py-24 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-6xl mx-auto glass rounded-[2rem] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left" data-aos="zoom-in" data-aos-duration="900" data-aos-easing="ease-out-back">
+            <div data-aos="fade-right" data-aos-delay="150">
+                <h2 class="text-3xl md:text-4xl font-extrabold dark:text-white text-slate-900 mb-3">
+                    Like what you <span class="gradient-text">see?</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 max-w-xl">
+                    Let’s talk about automating your business next.
+                </p>
+            </div>
+
+            <a href="#discovery-call" data-aos="fade-left" data-aos-delay="250" class="px-8 py-4 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition active:scale-95 shadow-lg shadow-pink-500/20 whitespace-nowrap">
+                Book a Free Automation Strategy Call
+                <i class="fas fa-arrow-right ml-3"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certificates" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6 text-center">Certificates</h2>
+            <p class="max-w-2xl mx-auto text-center text-slate-500 dark:text-slate-400 mb-16">
+                Training foundations supporting no-code automation, AI workflows, and prompt-based systems.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <template x-for="(certificate, index) in certificates" :key="index">
+                    <div data-aos="fade-up" @click="openCertificateModal(certificate)" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden cursor-pointer">
+                        <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3] relative">
+                            <img :src="certificate.image" :alt="certificate.title" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-bold dark:text-white" x-text="certificate.title"></h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="certificate.desc"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div x-show="certificateModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
+        <button @click="certificateModalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-purple-400 transition active:scale-75 z-[120]">
+            <i class="fas fa-times-circle"></i>
+        </button>
+
+        <div class="max-w-7xl w-full h-full flex flex-col lg:flex-row gap-12 pt-20 lg:pt-0" @click.away="certificateModalOpen = false">
+            <div class="w-full lg:w-2/3 overflow-y-auto space-y-6 pr-4 image-container">
+                <div class="glass p-2 rounded-3xl relative group">
+                    <img :src="activeCertificate.image" :alt="activeCertificate.title" class="w-full h-auto rounded-2xl shadow-xl">
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/3 text-left">
+                <span class="text-pink-500 font-bold tracking-widest uppercase text-[10px]">Certificate</span>
+                <h3 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-6" x-text="activeCertificate.title"></h3>
+                <div class="rounded-[1.5rem] bg-white/85 dark:bg-black/45 backdrop-blur-2xl border border-white/10 p-5 mb-10 shadow-xl">
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg font-light" x-text="activeCertificate.desc"></p>
+            </div>
+
+                <h4 class="text-slate-900 dark:text-white font-bold uppercase text-xs tracking-widest mb-4">Focus Area</h4>
+                <div class="flex flex-wrap gap-2">
+                    <template x-for="skill in activeCertificate.skills">
+                        <span class="px-4 py-2 bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-pink-500/30 rounded-full text-[11px] font-bold text-pink-500 shadow-sm" x-text="skill"></span>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discovery Call -->
+    <section id="discovery-call" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mb-14" data-aos="fade-up" data-aos-duration="900">
+                Ready to remove operational <span class="gradient-text">friction?</span>
+            </h2>
+
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div class="glass p-8 md:p-10 rounded-[2rem]" data-aos="fade-right" data-aos-delay="150" data-aos-duration="900">
+                    <h3 class="text-2xl md:text-3xl font-extrabold dark:text-white text-slate-900 mb-5">
+                        Book Your Free Automation Consultation
+                    </h3>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-8">
+                        Let’s discuss how automation can save business time, reduce manual work, and improve operational efficiency.
+                    </p>
+
+                    <div class="space-y-5 text-slate-500 dark:text-slate-400 text-sm mb-8">
+                        <div class="flex items-center gap-4"><i class="far fa-clock text-pink-500"></i><span>30-minute strategy call</span></div>
+                        <div class="flex items-center gap-4"><i class="fas fa-video text-pink-500"></i><span>Video call through Calendly</span></div>
+                    </div>
+
+                    <h4 class="font-bold dark:text-white text-slate-900 mb-4 flex items-center gap-3">
+                        <i class="far fa-comment-alt text-pink-500"></i> What we’ll discuss
+                    </h4>
+                    <div class="space-y-3 text-slate-500 dark:text-slate-400 text-sm">
+                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Your current workflows</p>
+                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Automation opportunities</p>
+                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Recommended automation solutions</p>
+                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Implementation steps</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-[2rem] p-3 md:p-4 overflow-hidden shadow-2xl" data-aos="zoom-in" data-aos-delay="250" data-aos-duration="900">
+                    <iframe src="https://calendly.com/sabianjessa05/30min?hide_gdpr_banner=1" class="w-full h-[720px] rounded-[1.5rem] bg-white" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-24 px-6 bg-slate-50/50 dark:bg-black/20 border-t border-white/5" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-16" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-extrabold dark:text-white text-slate-900 leading-tight mb-6">
+                    Automation support for <br>
+                    smoother <span class="gradient-text">operations.</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed max-w-md mb-8">
+                    AI-powered systems built for faster execution, cleaner workflows, and less repetitive manual work.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#discovery-call" class="px-7 py-4 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition active:scale-95 shadow-lg shadow-pink-500/20 whitespace-nowrap">
+                        Book Discovery Call <i class="fas fa-arrow-right ml-3"></i>
+                    </a>
+                    <a href="#works" class="px-7 py-4 glass font-bold rounded-full hover:bg-pink-500/10 transition active:scale-95 whitespace-nowrap">View Systems Built</a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-8">Navigate</h3>
+                <div class="space-y-5 text-slate-500 dark:text-slate-400 font-medium">
+                    <a href="#works" class="block hover:text-pink-500 transition">Automation Systems</a>
+                    <a href="#services" class="block hover:text-pink-500 transition">Capabilities</a>
+                    <a href="#tools" class="block hover:text-pink-500 transition">Tools</a>
+                    <a href="#experience" class="block hover:text-pink-500 transition">Experience</a>
+                    <a href="#certificates" class="block hover:text-pink-500 transition">Certificates</a>
+                    <a href="#discovery-call" class="block hover:text-pink-500 transition">Discovery Call</a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-8">Connect</h3>
+                <div class="space-y-4">
+                    <a href="https://www.linkedin.com/in/jessa-sabian" target="_blank" class="flex items-center gap-4 text-slate-500 dark:text-slate-400 hover:text-pink-500 transition">
+                        <span class="w-10 h-10 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center"><i class="fab fa-linkedin-in"></i></span> Connect on LinkedIn
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/~014a86456140f24238" target="_blank" class="flex items-center gap-4 text-slate-500 dark:text-slate-400 hover:text-pink-500 transition">
+                        <span class="w-10 h-10 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center font-extrabold text-[11px]">Up</span> Hire on Upwork
+                    </a>
+                    <a href="https://www.onlinejobs.ph/jobseekers/info/3060346" target="_blank" class="flex items-center gap-4 text-slate-500 dark:text-slate-400 hover:text-pink-500 transition">
+                        <span class="w-10 h-10 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center"><i class="fas fa-briefcase"></i></span> View OnlineJobs.ph
+                    </a>
+                    <button @click="copyToClipboard('sabianjessa05@gmail.com')" class="flex items-center gap-4 text-slate-500 dark:text-slate-400 hover:text-pink-500 transition text-left">
+                        <span class="w-10 h-10 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center"><i class="fas fa-envelope"></i></span> sabianjessa05@gmail.com
+                    </button>
+                    <button @click="copyToClipboard('+63 956 045 9250')" class="flex items-center gap-4 text-slate-500 dark:text-slate-400 hover:text-pink-500 transition text-left">
+                        <span class="w-10 h-10 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-center"><i class="fas fa-phone"></i></span> +63 956 045 9250
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-xs text-slate-500 dark:text-slate-500" data-aos="fade-up" data-aos-delay="250" data-aos-duration="1000">
+            <p>© 2026 Jessa Sabian. AI Automation & Operations Support.</p>
+            <p>Built to showcase automation systems, workflows, and backend operations.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
+        <button @click="modalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-purple-400 transition active:scale-75 z-[120]">
+            <i class="fas fa-times-circle"></i>
+        </button>
+
+        <div class="max-w-7xl w-full h-full flex flex-col lg:flex-row gap-12 pt-20 lg:pt-0" @click.away="modalOpen = false">
+            <div class="w-full lg:w-2/3 overflow-y-auto space-y-6 pr-4 image-container">
+                <template x-for="img in activeProject.images">
+                    <div class="glass p-2 rounded-3xl relative group">
+                        <button @click="openFullscreen(img)" class="absolute top-4 right-4 z-20 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-pink-500 transition opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-expand"></i>
+                        </button>
+
+                        <img :src="img" @click="openFullscreen(img)" class="w-full h-auto rounded-2xl shadow-xl cursor-zoom-in hover:scale-[1.01] transition duration-300">
+                    </div>
+                </template>
+            </div>
+
+            <div class="w-full lg:w-1/3 text-left">
+                <span class="text-pink-500 font-bold tracking-widest uppercase text-[10px]" x-text="activeProject.tool"></span>
+                <h3 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-6" x-text="activeProject.title"></h3>
+                <div class="rounded-[1.5rem] bg-white/85 dark:bg-black/45 backdrop-blur-2xl border border-white/10 p-5 mb-10 shadow-xl">
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg font-light" x-text="activeProject.desc"></p>
+            </div>
+
+                <h4 class="text-slate-900 dark:text-white font-bold uppercase text-xs tracking-widest mb-4">
+                    Stack / Apps
+                </h4>
+
+                <div class="flex flex-wrap gap-2">
+                    <template x-for="app in activeProject.apps">
+                        <span class="px-4 py-2 bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-pink-500/30 rounded-full text-[11px] font-bold text-pink-500 shadow-sm" x-text="app"></span>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Image Viewer -->
+    <div x-show="fullscreenOpen" x-transition x-cloak class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6">
+        <button @click="fullscreenOpen = false" class="absolute top-6 right-6 text-white text-5xl hover:text-purple-400 transition z-[210]">
+            <i class="fas fa-times-circle"></i>
+        </button>
+
+        <img :src="fullscreenImage" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl">
+    </div>
+
+    <script>
+        function portfolioLogic() {
+            return {
+                darkMode: true,
+                modalOpen: false,
+                activeProject: {},
+                fullscreenImage: '',
+                fullscreenOpen: false,
+                certificateModalOpen: false,
+                activeCertificate: {},
+
+                toggleTheme() { 
+                    this.darkMode = !this.darkMode; 
+                },
+
+                openFullscreen(img) {
+                    this.fullscreenImage = img;
+                    this.fullscreenOpen = true;
+                },
+
+                openCertificateModal(certificate) {
+                    this.activeCertificate = certificate;
+                    this.certificateModalOpen = true;
+                },
+
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text);
+
+                    const toast = document.createElement('div');
+                    toast.innerText = 'Copied to clipboard';
+                    toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-pink-500 text-white text-sm font-bold rounded-full z-[9999] shadow-xl';
+                    document.body.appendChild(toast);
+
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 2000);
+                },
+
+                certificates: [
+                    { title: 'AI Automation with n8n', image: 'AI Automation with n8n.png', desc: 'Training focused on workflow automation, AI agents, app integrations, and backend systems using n8n.', skills: ['n8n', 'AI Automation', 'Workflow Design'] },
+                    { title: 'No Code Automation with Zapier', image: 'No Code Automation with Zapier.png', desc: 'Training focused on building no-code automations, triggers, actions, and business process integrations using Zapier.', skills: ['Zapier', 'No-Code Automation', 'App Integrations'] },
+                    { title: 'No Code Automation with Make.com', image: 'No Code Automation with Make.com.png', desc: 'Training focused on visual automation scenarios, routers, modules, and scalable process workflows using Make.com.', skills: ['Make.com', 'Scenario Building', 'Process Automation'] },
+                    { title: 'Prompt Engineering Training', image: 'Prompt Engineering Training.png', desc: 'Training focused on writing effective AI prompts, improving outputs, and structuring instructions for large language models.', skills: ['Prompt Engineering', 'LLMs', 'AI Instructions'] }
+                ],
+
+                projects: [
+                    { title: 'Xero Transactions Asana', tool: 'Make.com Workflow', desc: 'Automated accounting synchronization between financial operations and project execution pipelines.', images: ['4. Xero Transactions Asana (Make.com 1).png'], apps: ['Make.com', 'Xero', 'Asana', 'CSV Aggregators'] },
+                    { title: 'AI Document Router', tool: 'Make.com', desc: 'An intelligent Gmail and Google Drive workflow that detects, analyzes, renames, and organizes incoming attachments.', images: ['5. Auto Sort Gmail Attachments on Drive (Make.com 2).png'], apps: ['Make.com', 'Gmail', 'Google Drive', 'AI Parser'] },
+                    { title: 'AI Content Repurposing Engine', tool: 'Zapier Automation', desc: 'A content automation system that transforms long-form materials into ready-to-publish social media assets.', images: ['1. AI Content Repurposing (Zapier 1).png'], apps: ['Zapier', 'OpenRouter', 'FB/LinkedIn API'] },
+                    { title: 'Asana CRM Engagement Workflow', tool: 'Zapier CRM', desc: 'A multi-step CRM engagement system for lead folders, follow-up sequences, and task-based sales operations.', images: ['2. Asana CRM Lead Engagement Workflow (Zapier 2).png'], apps: ['Zapier', 'Asana', 'Gmail', 'Delay by Zapier'] },
+                    { title: 'Automated Lead Enrichment', tool: 'Zapier Workflow', desc: 'A lead operations workflow that enriches inbound prospects and routes high-priority opportunities to team channels.', images: ['3. Automated Lead Enrichment (Zapier 3).png'], apps: ['Zapier', 'Apollo.io', 'Slack', 'Paths'] },
+                    { title: 'AI Agent for Facebook', tool: 'n8n Workflow', desc: 'A real-time response agent designed to monitor webhooks, understand inquiries, and reply using AI memory.', images: ['6. AI Agent for Facebook (n8n 1).png'], apps: ['n8n', 'Facebook Graph API', 'Simple Memory', 'Google Gemini'] },
+                    { title: 'AI Jobs Scraper + Resume Optimizer', tool: 'n8n + LLMs', desc: 'An AI workflow that collects job opportunities, analyzes descriptions, and generates tailored resume drafts.', images: ['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'], apps: ['n8n', 'RapidAPI', 'Slack', 'OpenRouter', 'Google Docs'] },
+                    { title: 'AI ASMR Video Bot', tool: 'n8n Workflow', desc: 'A creative automation pipeline for generating AI scripts, short-form video assets, and publishing content.', images: ['8. ASMR Remake (n8n 3).png'], apps: ['n8n', 'Google Gemini AI', 'YouTube API', 'Facebook Graph API'] },
+                    { title: 'Voice AI Appointment System', tool: 'n8n Toolset', desc: 'A voice and chat automation system connected to calendars and Airtable for bookings, cancellations, and logs.', images: ['9. AI Receptionist (n8n 4).png'], apps: ['n8n', 'Vapi AI', 'Google Calendar', 'Airtable'] },
+                    { title: 'AI-Powered RAG Workflow', tool: 'n8n Automation', desc: 'A retrieval-augmented generation system that allows businesses to query internal documents using vector search.', images: ['10. RAG Agent (n8n 5).png'], apps: ['n8n', 'Supabase Vector Store', 'Google Gemini AI'] },
+                    { title: 'Automated Certification Engine', tool: 'n8n Automation', desc: 'A bulk certificate generation system that creates custom PDFs from sheets and distributes them through email.', images: ['11. E-cert Generator (n8n 6).png'], apps: ['n8n', 'Google Sheets', 'Google Slides', 'Gmail'] }
+                ],
+
+                openModal(project) { 
+                    this.activeProject = project; 
+                    this.modalOpen = true; 
+                }
+            }
+        }
+
+        const glow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        window.addEventListener('mousedown', () => glow.classList.add('cursor-clicking'));
+        window.addEventListener('mouseup', () => glow.classList.remove('cursor-clicking'));
+
+        window.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.className = 'click-ripple';
+            ripple.style.left = `${e.clientX - 10}px`;
+            ripple.style.top = `${e.clientY - 10}px`;
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+
+        AOS.init({ duration: 1000, once: true, offset: 120, easing: 'ease-out-cubic' });
+    </script>
+</body>
+</html>
