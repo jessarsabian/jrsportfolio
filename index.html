@@ -25,86 +25,118 @@
     </script>
 
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
-    body { 
-        font-family: 'Plus Jakarta Sans', sans-serif; 
-        cursor: auto;
-        transition: background-color 0.5s ease; 
-        user-select: none; 
-    }
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    cursor: auto !important;
+    transition: background-color 0.5s ease; 
+    user-select: none; 
+}
 
-    [x-cloak] { display: none !important; }
+[x-cloak] { 
+    display: none !important; 
+}
 
-    .theme-bg { transition: all 0.5s ease; min-height: 100vh; }
-    .dark .theme-bg { background-color: #0b0118; background-image: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 40%); }
-    .light .theme-bg { background-color: #fcfaff; }
+.theme-bg { 
+    transition: all 0.5s ease; 
+    min-height: 100vh; 
+}
 
-    .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-    .light .glass { background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(0, 0, 0, 0.05); }
+.dark .theme-bg { 
+    background-color: #0b0118; 
+    background-image: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 40%); 
+}
 
-    #cursor-glow { 
-        width: 500px; 
-        height: 500px; 
-        background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%); 
-        border-radius: 50%; 
-        position: fixed; 
-        pointer-events: none; 
-        z-index: 9999; 
-        transform: translate(-50%, -50%); 
-        transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                    height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+.light .theme-bg { 
+    background-color: #fcfaff; 
+}
 
-    .cursor-clicking { 
-        width: 350px !important; 
-        height: 350px !important; 
-        background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%) !important; 
-    }
+.glass { 
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+}
 
-    .gradient-text { 
-        background: linear-gradient(135deg, #ec4899 0%, #6366f1 100%); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent; 
-    }
+.light .glass { 
+    background: rgba(255, 255, 255, 0.7); 
+    border: 1px solid rgba(0, 0, 0, 0.05); 
+}
 
-    .dark .gradient-text { 
-        background: linear-gradient(135deg, #fff 30%, #ec4899 100%); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent; 
-    }
+/* CURSOR GLOW */
+#cursor-glow { 
+    width: 500px; 
+    height: 500px; 
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+    border-radius: 50%; 
+    position: fixed; 
+    pointer-events: none; 
+    z-index: 1;
+    transform: translate(-50%, -50%); 
+    transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-    .hero-image-mask {
-        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    }
+.cursor-clicking { 
+    width: 350px !important; 
+    height: 350px !important; 
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%) !important; 
+}
 
-    .image-container::-webkit-scrollbar { width: 4px; }
+.gradient-text { 
+    background: linear-gradient(135deg, #ec4899 0%, #6366f1 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
 
-    .image-container::-webkit-scrollbar-thumb { 
-        background: #ec4899; 
-        border-radius: 10px; 
-    }
+.dark .gradient-text { 
+    background: linear-gradient(135deg, #fff 30%, #ec4899 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
 
-    .timeline-border { 
-        border-left: 2px solid rgba(236, 72, 153, 0.3); 
-    }
+.hero-image-mask {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
 
-    .click-ripple {
-        position: absolute; 
-        border-radius: 50%; 
-        background: rgba(236, 72, 153, 0.3);
-        transform: scale(0); 
-        animation: ripple 0.6s linear; 
-        pointer-events: none;
-    }
+.image-container::-webkit-scrollbar { 
+    width: 4px; 
+}
 
-    @keyframes ripple { 
-        to { 
-            transform: scale(4); 
-            opacity: 0; 
-        } 
-    }
+.image-container::-webkit-scrollbar-thumb { 
+    background: #ec4899; 
+    border-radius: 10px; 
+}
+
+.timeline-border { 
+    border-left: 2px solid rgba(236, 72, 153, 0.3); 
+}
+
+.click-ripple {
+    position: absolute; 
+    border-radius: 50%; 
+    background: rgba(236, 72, 153, 0.3);
+    transform: scale(0); 
+    animation: ripple 0.6s linear; 
+    pointer-events: none;
+}
+
+@keyframes ripple { 
+    to { 
+        transform: scale(4); 
+        opacity: 0; 
+    } 
+}
+
+/* FORCE SHOW CURSOR */
+a, button, img, .cursor-pointer {
+    cursor: pointer !important;
+}
+
+body, html, * {
+    cursor: auto;
+}
 </style>
 </head>
 
@@ -218,26 +250,72 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
-        <div class="max-w-5xl mx-auto glass p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden">
-            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-8">Contact</h2>
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
-                    <i class="fas fa-envelope text-pink-500 mb-4 text-xl"></i>
-                    <p class="text-sm font-bold">sabianjessa05@gmail.com</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
-                    <i class="fas fa-phone text-pink-500 mb-4 text-xl"></i>
-                    <p class="text-sm font-bold">+63 956 045 9250</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
-                    <i class="fab fa-linkedin text-pink-500 mb-4 text-xl"></i>
-                    <p class="text-sm font-bold">in/jessa-sabian</p>
-                </div>
+<section id="contact" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+
+    <div class="max-w-5xl mx-auto glass p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden">
+
+        <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-8">
+            Contact
+        </h2>
+
+        <!-- Email + Phone -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+
+            <!-- Email -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
+                <i class="fas fa-envelope text-pink-500 mb-4 text-xl"></i>
+                <p class="text-sm font-bold">sabianjessa05@gmail.com</p>
             </div>
-            <a href="mailto:sabianjessa05@gmail.com" class="px-12 py-5 bg-pink-600 text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-pink-500 transition active:scale-90 shadow-lg shadow-pink-500/20">Email Me</a>
+
+            <!-- Phone -->
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
+                <i class="fas fa-phone text-pink-500 mb-4 text-xl"></i>
+                <p class="text-sm font-bold">+63 956 045 9250</p>
+            </div>
+
         </div>
-    </section>
+
+        <!-- Social Links -->
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+
+            <a 
+            href="https://www.linkedin.com/in/jessa-sabian"
+            target="_blank"
+            class="px-6 py-3 glass rounded-full text-sm font-bold hover:bg-pink-500 hover:text-white transition"
+            >
+                <i class="fab fa-linkedin mr-2"></i> LinkedIn
+            </a>
+
+            <a 
+            href="https://www.upwork.com/freelancers/~014a86456140f24238"
+            target="_blank"
+            class="px-6 py-3 glass rounded-full text-sm font-bold hover:bg-pink-500 hover:text-white transition"
+            >
+                <i class="fab fa-upwork mr-2"></i> Upwork
+            </a>
+
+            <a 
+            href="https://www.onlinejobs.ph/jobseekers/info/3060346"
+            target="_blank"
+            class="px-6 py-3 glass rounded-full text-sm font-bold hover:bg-pink-500 hover:text-white transition"
+            >
+                <i class="fas fa-briefcase mr-2"></i> OnlineJobs.ph
+            </a>
+
+        </div>
+
+        <!-- Gmail Button -->
+        <a 
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=sabianjessa05@gmail.com"
+        target="_blank"
+        class="px-12 py-5 bg-pink-600 text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-pink-500 transition active:scale-90 shadow-lg shadow-pink-500/20"
+        >
+            Email Me
+        </a>
+
+    </div>
+
+</section>
 
     <!-- Modal -->
 <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
