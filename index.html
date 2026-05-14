@@ -17,7 +17,7 @@
             theme: {
                 extend: {
                     colors: {
-                        fantasy: { dark: '#0b0118', light: '#fcfaff', pink: '#ec4899', indigo: '#6366f1' }
+                        fantasy: { dark: '#0b0118', light: '#fcfaff', pink: '#ec4899', red: '#ef4444' }
                     }
                 }
             }
@@ -53,7 +53,7 @@
 
         .dark .theme-bg { 
             background-color: #0b0118; 
-            background-image: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 40%); 
+            background-image: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.10) 0%, transparent 35%), radial-gradient(circle at 85% 15%, rgba(239, 68, 68, 0.08) 0%, transparent 30%); 
         }
 
         .light .theme-bg { 
@@ -72,32 +72,42 @@
         }
 
         #cursor-glow {
-            width: 580px;
-            height: 580px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.16) 0%, rgba(236, 72, 153, 0.10) 35%, transparent 75%);
-            border-radius: 50%; 
-            position: fixed; 
-            pointer-events: none; 
+            width: 700px;
+            height: 350px;
+            background: radial-gradient(ellipse at center,
+                rgba(236, 72, 153, 0.12) 0%,
+                rgba(239, 68, 68, 0.08) 35%,
+                rgba(236, 72, 153, 0.04) 55%,
+                transparent 78%);
+            border-radius: 50%;
+            filter: blur(40px);
+            position: fixed;
+            pointer-events: none;
             z-index: 1;
-            transform: translate(-50%, -50%); 
-            transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                        height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translate(-50%, -50%);
+            transition:
+                width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                opacity 0.2s ease;
         }
 
-        .cursor-clicking { 
-            width: 350px !important; 
-            height: 350px !important; 
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%) !important; 
+        .cursor-clicking {
+            width: 520px !important;
+            height: 260px !important;
+            background: radial-gradient(ellipse at center,
+                rgba(239, 68, 68, 0.14) 0%,
+                rgba(236, 72, 153, 0.10) 40%,
+                transparent 78%) !important;
         }
 
         .gradient-text { 
-            background: linear-gradient(135deg, #ec4899 0%, #6366f1 100%); 
+            background: linear-gradient(135deg, #ec4899 0%, #ef4444 45%, #8b5cf6 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
 
         .dark .gradient-text { 
-            background: linear-gradient(135deg, #fff 30%, #ec4899 100%); 
+            background: linear-gradient(135deg, #ffffff 20%, #ec4899 45%, #ef4444 75%, #8b5cf6 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
@@ -117,13 +127,13 @@
         }
 
         .timeline-border { 
-            border-left: 2px solid rgba(236, 72, 153, 0.3); 
+            border-left: 2px solid rgba(34, 197, 94, 0.3); 
         }
 
         .click-ripple {
             position: absolute; 
             border-radius: 50%; 
-            background: rgba(236, 72, 153, 0.3);
+            background: rgba(239, 68, 68, 0.28);
             transform: scale(0); 
             animation: ripple 0.6s linear; 
             pointer-events: none;
@@ -213,10 +223,10 @@
         <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center">
             <div class="text-xl font-extrabold tracking-tighter dark:text-white text-slate-900">JESSA SABIAN</div>
             <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-widest items-center">
-                <a href="#services" class="hover:text-pink-500 transition active:scale-90">Capabilities</a>
-                <a href="#experience" class="hover:text-pink-500 transition active:scale-90">Experience</a>
-                <a href="#works" class="hover:text-pink-500 transition active:scale-90">Systems</a>
-                <a href="#contact" class="hover:text-pink-500 transition active:scale-90">Contact</a>
+                <a href="#services" class="hover:text-purple-400 transition active:scale-90">Capabilities</a>
+                <a href="#experience" class="hover:text-purple-400 transition active:scale-90">Experience</a>
+                <a href="#works" class="hover:text-purple-400 transition active:scale-90">Systems</a>
+                <a href="#contact" class="hover:text-purple-400 transition active:scale-90">Contact</a>
                 <button @click="toggleTheme()" class="ml-4 w-10 h-10 rounded-xl border border-black/5 dark:border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white transition active:scale-75">
                     <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
                 </button>
@@ -443,23 +453,31 @@
             </p>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div data-aos="fade-up" class="glass p-8 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95">
-                    <i class="fas fa-certificate text-pink-500 text-3xl mb-5"></i>
+                <div data-aos="fade-up" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                    <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
+                        <img src="AI Automation with n8n.png" alt="AI Automation with n8n" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
                     <h3 class="font-bold dark:text-white">AI Automation with n8n</h3>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="100" class="glass p-8 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95">
-                    <i class="fas fa-certificate text-pink-500 text-3xl mb-5"></i>
+                <div data-aos="fade-up" data-aos-delay="100" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                    <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
+                        <img src="No Code Automation with Zapier.png" alt="No Code Automation with Zapier" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
                     <h3 class="font-bold dark:text-white">No Code Automation with Zapier</h3>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="200" class="glass p-8 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95">
-                    <i class="fas fa-certificate text-pink-500 text-3xl mb-5"></i>
+                <div data-aos="fade-up" data-aos-delay="200" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                    <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
+                        <img src="No Code Automation with Make.com.png" alt="No Code Automation with Make.com" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
                     <h3 class="font-bold dark:text-white">No Code Automation with Make.com</h3>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="300" class="glass p-8 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95">
-                    <i class="fas fa-certificate text-pink-500 text-3xl mb-5"></i>
+                <div data-aos="fade-up" data-aos-delay="300" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                    <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
+                        <img src="Prompt Engineering Training.png" alt="Prompt Engineering Training" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
                     <h3 class="font-bold dark:text-white">Prompt Engineering Training</h3>
                 </div>
             </div>
@@ -478,14 +496,24 @@
             </p>
 
             <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 relative">
                     <i class="fas fa-envelope text-pink-500 mb-4 text-xl"></i>
-                    <p class="text-sm font-bold">sabianjessa05@gmail.com</p>
+                    <div @click="copyToClipboard('sabianjessa05@gmail.com')" class="relative inline-block cursor-pointer group">
+                        <p class="text-sm font-bold">sabianjessa05@gmail.com</p>
+                        <span class="absolute left-1/2 -translate-x-1/2 -top-9 px-3 py-1 rounded-full bg-pink-500 text-white text-[9px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none shadow-lg shadow-pink-500/30 before:content-[''] before:absolute before:w-2 before:h-2 before:bg-pink-500 before:rotate-45 before:-bottom-1 before:left-1/2 before:-translate-x-1/2">
+                            Copy
+                        </span>
+                    </div>
                 </div>
 
-                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 cursor-pointer">
+                <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition duration-500 active:scale-95 relative">
                     <i class="fas fa-phone text-pink-500 mb-4 text-xl"></i>
-                    <p class="text-sm font-bold">+63 956 045 9250</p>
+                    <div @click="copyToClipboard('+63 956 045 9250')" class="relative inline-block cursor-pointer group">
+                        <p class="text-sm font-bold">+63 956 045 9250</p>
+                        <span class="absolute left-1/2 -translate-x-1/2 -top-9 px-3 py-1 rounded-full bg-pink-500 text-white text-[9px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none shadow-lg shadow-pink-500/30 before:content-[''] before:absolute before:w-2 before:h-2 before:bg-pink-500 before:rotate-45 before:-bottom-1 before:left-1/2 before:-translate-x-1/2">
+                            Copy
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -504,7 +532,7 @@
             </div>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://calendly.com/sabianjessa05/30min" target="_blank" class="px-12 py-5 bg-pink-600 text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-pink-500 transition active:scale-90 shadow-lg shadow-pink-500/20">
+                <a href="https://calendly.com/sabianjessa05/30min" target="_blank" class="px-12 py-5 bg-pink-500 text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-pink-500 transition active:scale-90 shadow-lg shadow-pink-500/20">
                     Book a Call
                 </a>
 
@@ -517,7 +545,7 @@
 
     <!-- Project Modal -->
     <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
-        <button @click="modalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition active:scale-75 z-[120]">
+        <button @click="modalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-purple-400 transition active:scale-75 z-[120]">
             <i class="fas fa-times-circle"></i>
         </button>
 
@@ -554,7 +582,7 @@
 
     <!-- Fullscreen Image Viewer -->
     <div x-show="fullscreenOpen" x-transition x-cloak class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6">
-        <button @click="fullscreenOpen = false" class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition z-[210]">
+        <button @click="fullscreenOpen = false" class="absolute top-6 right-6 text-white text-5xl hover:text-purple-400 transition z-[210]">
             <i class="fas fa-times-circle"></i>
         </button>
 
@@ -577,6 +605,19 @@
                 openFullscreen(img) {
                     this.fullscreenImage = img;
                     this.fullscreenOpen = true;
+                },
+
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text);
+
+                    const toast = document.createElement('div');
+                    toast.innerText = 'Copied to clipboard';
+                    toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-pink-500 text-white text-sm font-bold rounded-full z-[9999] shadow-xl';
+                    document.body.appendChild(toast);
+
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 2000);
                 },
 
                 projects: [
