@@ -453,28 +453,31 @@
             </p>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div data-aos="fade-up" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
-                    <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
+                <div data-aos="fade-up" @click="openFullscreen('AI Automation with n8n.png')" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden cursor-pointer">
+                    <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3] relative">
+                        <div class="absolute top-4 right-4 z-10 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="fas fa-expand"></i>
+                        </div>
                         <img src="AI Automation with n8n.png" alt="AI Automation with n8n" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
                     <h3 class="font-bold dark:text-white">AI Automation with n8n</h3>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="100" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                <div data-aos="fade-up" data-aos-delay="100" @click="openFullscreen('No Code Automation with Zapier.png')" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden cursor-pointer">
                     <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
                         <img src="No Code Automation with Zapier.png" alt="No Code Automation with Zapier" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
                     <h3 class="font-bold dark:text-white">No Code Automation with Zapier</h3>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="200" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                <div data-aos="fade-up" data-aos-delay="200" @click="openFullscreen('No Code Automation with Make.com.png')" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden cursor-pointer">
                     <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
                         <img src="No Code Automation with Make.com.png" alt="No Code Automation with Make.com" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
                     <h3 class="font-bold dark:text-white">No Code Automation with Make.com</h3>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="300" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden">
+                <div data-aos="fade-up" data-aos-delay="300" @click="openFullscreen('Prompt Engineering Training.png')" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden cursor-pointer">
                     <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3]">
                         <img src="Prompt Engineering Training.png" alt="Prompt Engineering Training" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
