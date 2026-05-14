@@ -198,40 +198,104 @@
     </section>
 
     <!-- Modal -->
-    <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
-        <button @click="modalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition active:scale-75"><i class="fas fa-times-circle"></i></button>
+<div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
+    
+    <button @click="modalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition active:scale-75 z-[120]">
+        <i class="fas fa-times-circle"></i>
+    </button>
 
-        <div class="max-w-7xl w-full h-full flex flex-col lg:flex-row gap-12 pt-20 lg:pt-0" @click.away="modalOpen = false">
-            <div class="w-full lg:w-2/3 overflow-y-auto space-y-6 pr-4 image-container">
-                <template x-for="img in activeProject.images">
-                    <div class="glass p-2 rounded-3xl">
-                        <img :src="img" class="w-full h-auto rounded-2xl shadow-xl">
-                    </div>
+    <div class="max-w-7xl w-full h-full flex flex-col lg:flex-row gap-12 pt-20 lg:pt-0" @click.away="modalOpen = false">
+        
+        <!-- Images -->
+        <div class="w-full lg:w-2/3 overflow-y-auto space-y-6 pr-4 image-container">
+            <template x-for="img in activeProject.images">
+
+                <div class="glass p-2 rounded-3xl relative group">
+
+                    <!-- Fullscreen Button -->
+                    <button 
+                        @click="openFullscreen(img)"
+                        class="absolute top-4 right-4 z-20 bg-black/60 text-white w-12 h-12 rounded-full hover:bg-pink-500 transition opacity-0 group-hover:opacity-100"
+                    >
+                        <i class="fas fa-expand"></i>
+                    </button>
+
+                    <!-- Image -->
+                    <img 
+                        :src="img"
+                        @click="openFullscreen(img)"
+                        class="w-full h-auto rounded-2xl shadow-xl cursor-zoom-in hover:scale-[1.01] transition duration-300"
+                    >
+
+                </div>
+
+            </template>
+        </div>
+
+        <!-- Right Content -->
+        <div class="w-full lg:w-1/3 text-left">
+            <span class="text-pink-500 font-bold tracking-widest uppercase text-[10px]" x-text="activeProject.tool"></span>
+
+            <h3 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-6" x-text="activeProject.title"></h3>
+
+            <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-10 text-lg font-light" x-text="activeProject.desc"></p>
+
+            <h4 class="text-slate-900 dark:text-white font-bold uppercase text-xs tracking-widest mb-4">
+                Stack / Apps
+            </h4>
+
+            <div class="flex flex-wrap gap-2">
+                <template x-for="app in activeProject.apps">
+                    <span class="px-4 py-2 bg-pink-500/10 border border-pink-500/20 rounded-full text-[11px] font-bold text-pink-500" x-text="app"></span>
                 </template>
             </div>
-
-            <div class="w-full lg:w-1/3 text-left">
-                <span class="text-pink-500 font-bold tracking-widest uppercase text-[10px]" x-text="activeProject.tool"></span>
-                <h3 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-6" x-text="activeProject.title"></h3>
-                <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-10 text-lg font-light" x-text="activeProject.desc"></p>
-                <h4 class="text-slate-900 dark:text-white font-bold uppercase text-xs tracking-widest mb-4">Stack / Apps</h4>
-                <div class="flex flex-wrap gap-2">
-                    <template x-for="app in activeProject.apps">
-                        <span class="px-4 py-2 bg-pink-500/10 border border-pink-500/20 rounded-full text-[11px] font-bold text-pink-500" x-text="app"></span>
-                    </template>
-                </div>
-            </div>
         </div>
-    </div>
 
+    </div>
+</div>
+
+<!-- Fullscreen Image Viewer -->
+<div 
+    x-show="fullscreenOpen"
+    x-transition
+    x-cloak
+    class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6"
+>
+
+    <!-- Close -->
+    <button 
+        @click="fullscreenOpen = false"
+        class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition z-[210]"
+    >
+        <i class="fas fa-times-circle"></i>
+    </button>
+
+    <!-- Fullscreen Image -->
+    <img 
+        :src="fullscreenImage"
+        class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+    >
+
+</div>
     <script>
         function portfolioLogic() {
-            return {
-                darkMode: true,
-                modalOpen: false,
-                activeProject: {},
-                toggleTheme() { this.darkMode = !this.darkMode; },
-                projects: [
+             return {
+            darkMode: true,
+            modalOpen: false,
+            activeProject: {},
+            fullscreenImage: '',
+            fullscreenOpen: false,
+
+            toggleTheme() { 
+                this.darkMode = !this.darkMode; 
+            },
+
+            openFullscreen(img) {
+                this.fullscreenImage = img;
+                this.fullscreenOpen = true;
+            },
+
+            projects: [
                     // Arranged 1 through 11
                     { title: 'Xero Transactions Asana', tool: 'Make.com Workflow', desc: 'Syncs accounting transactions directly into Asana tasks for project tracking and financial processing.', images: ['4. Xero Transactions Asana (Make.com 1).png'], apps: ['Make.com', 'Xero', 'Asana', 'CSV Aggregators'] },
                     { title: 'Auto Sort Gmail Attachments on Drive', tool: 'Make.com', desc: 'Watches Gmail for specific attachments, analyzes them via AI, renames files, and uploads them into categorized Google Drive folders.', images: ['5. Auto Sort Gmail Attachments on Drive (Make.com 2).png'], apps: ['Make.com', 'Gmail', 'Google Drive', 'AI Parser'] },
@@ -239,10 +303,10 @@
                     { title: 'Asana CRM Lead Engagement Workflow', tool: 'Zapier CRM', desc: 'A complex 30-step engagement workflow that manages lead folders, follow-up sequences, and task updates.', images: ['2. Asana CRM Lead Engagement Workflow (Zapier 2).png'], apps: ['Zapier', 'Asana', 'Gmail', 'Delay by Zapier'] },
                     { title: 'Automated Lead Enrichment', tool: 'Zapier Workflow', desc: 'Enriches inbound leads via Apollo API and routes them to team channels based on priority routing logic.', images: ['3. Automated Lead Enrichment (Zapier 3).png'], apps: ['Zapier', 'Apollo.io', 'Slack', 'Paths'] },
                     { title: 'AI Agent for Facebook', tool: 'n8n Workflow', desc: 'Real-time response agent monitoring webhooks and answering inquiries with intelligent context and memory.', images: ['6. AI Agent for Facebook (n8n 1).png'], apps: ['n8n', 'Facebook Graph API', 'Simple Memory', 'Google Gemini'] },
-                    { title: 'AI Jobs Scraper + Resume Optimizer', tool: 'n8n + LLMs', desc: 'Workflow that scrapes job listings, analyzes descriptions, and generates tailored resume drafts into Google Docs.', images: ['7. AI Jobs Scraper + Resume Optimizer (n8n 2)'], apps: ['n8n', 'RapidAPI', 'Slack', 'OpenRouter', 'Google Docs'] },
-                    { title: 'ASMR Remake', tool: 'n8n Workflow', desc: 'Automated pipeline generating AI scripts and videos, publishing them to YouTube Shorts and Facebook Reels.', images: ['8. ASMR Remake (n8n 3)'], apps: ['n8n', 'Google Gemini AI', 'YouTube API', 'Facebook Graph API'] },
-                    { title: 'AI Receptionist System', tool: 'n8n Toolset', desc: 'Complex voice and chat AI integrated with Google Calendar and Airtable to handle appointment bookings and logs.', images: ['9. AI Receptionist (n8n 4)'], apps: ['n8n', 'Vapi AI', 'Google Calendar', 'Airtable'] },
-                    { title: 'AI-Powered RAG Workflow', tool: 'n8n Automation', desc: 'A Retrieval-Augmented Generation (RAG) system allowing businesses to query internal documents using vector embeddings and AI agents.', images: ['10. RAG Agent (n8n 5)'], apps: ['n8n', 'Supabase Vector Store', 'Google Gemini AI'] },
+                    { title: 'AI Jobs Scraper + Resume Optimizer', tool: 'n8n + LLMs', desc: 'Workflow that scrapes job listings, analyzes descriptions, and generates tailored resume drafts into Google Docs.', images: ['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'], apps: ['n8n', 'RapidAPI', 'Slack', 'OpenRouter', 'Google Docs'] },
+                    { title: 'ASMR Remake', tool: 'n8n Workflow', desc: 'Automated pipeline generating AI scripts and videos, publishing them to YouTube Shorts and Facebook Reels.', images: ['8. ASMR Remake (n8n 3).png'], apps: ['n8n', 'Google Gemini AI', 'YouTube API', 'Facebook Graph API'] },
+                    { title: 'AI Receptionist System', tool: 'n8n Toolset', desc: 'Complex voice and chat AI integrated with Google Calendar and Airtable to handle appointment bookings and logs.', images: ['9. AI Receptionist (n8n 4).png'], apps: ['n8n', 'Vapi AI', 'Google Calendar', 'Airtable'] },
+                    { title: 'AI-Powered RAG Workflow', tool: 'n8n Automation', desc: 'A Retrieval-Augmented Generation (RAG) system allowing businesses to query internal documents using vector embeddings and AI agents.', images: ['10. RAG Agent (n8n 5).png'], apps: ['n8n', 'Supabase Vector Store', 'Google Gemini AI'] },
                     { title: 'Bulk E-Certificate System', tool: 'n8n Automation', desc: 'Automates custom PDF certificate generation from data sheets and distributes them via personalized emails.', images: ['11. E-cert Generator (n8n 6).png'], apps: ['n8n', 'Google Sheets', 'Google Slides', 'Gmail'] }
                 ],
                 openModal(project) { this.activeProject = project; this.modalOpen = true; }
