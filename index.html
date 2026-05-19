@@ -222,13 +222,16 @@
     <nav class="fixed w-full z-50 py-6 px-6">
         <div class="max-w-7xl mx-auto glass rounded-2xl px-8 py-4 flex justify-between items-center">
             <div class="text-xl font-extrabold tracking-tighter dark:text-white text-slate-900">JESSA SABIAN</div>
-            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-widest items-center">
+            <div class="hidden md:flex space-x-6 text-[10px] font-bold uppercase tracking-widest items-center">
+                <a href="#about" class="hover:text-purple-400 transition active:scale-90">About</a>
                 <a href="#services" class="hover:text-purple-400 transition active:scale-90">Services</a>
-                <a href="#experience" class="hover:text-purple-400 transition active:scale-90">Experience</a>
+                <a href="#process" class="hover:text-purple-400 transition active:scale-90">Process</a>
                 <a href="#works" class="hover:text-purple-400 transition active:scale-90">Work</a>
+                <a href="#certificates" class="hover:text-purple-400 transition active:scale-90">Certificates</a>
+                <a href="#faq" class="hover:text-purple-400 transition active:scale-90">FAQ</a>
                 <a href="#contact" class="hover:text-purple-400 transition active:scale-90">Contact</a>
                 <a href="#discovery-call" class="px-6 py-3 bg-pink-500 text-white font-bold rounded-full uppercase tracking-widest text-[10px] hover:bg-pink-400 transition active:scale-90 shadow-lg shadow-pink-500/20 whitespace-nowrap flex items-center justify-center">Book a Call</a>
-                <button @click="toggleTheme()" class="ml-4 w-10 h-10 rounded-xl border border-black/5 dark:border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white transition active:scale-75">
+                <button @click="toggleTheme()" class="ml-2 w-10 h-10 rounded-xl border border-black/5 dark:border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white transition active:scale-75">
                     <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
                 </button>
             </div>
@@ -236,27 +239,86 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center pt-20 px-6 overflow-hidden">
+    <section class="min-h-screen flex items-center pt-28 px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <h2 class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-6">AI SYSTEMS & AUTOMATION</h2>
-                <h1 class="text-6xl md:text-8xl font-extrabold dark:text-white text-slate-900 leading-tight mb-8">
-                    AI SYSTEMS FOR <br><span class="gradient-text">SMART OPERATIONS</span>
+                <h2 class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-6">AI Automation Specialist | n8n • Zapier • Make.com • AI Agents</h2>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold dark:text-white text-slate-900 leading-[0.95] mb-8">
+                    Turn repetitive tasks into systems that <span class="gradient-text">run for you.</span>
                 </h1>
-                <p class="max-w-lg text-slate-500 dark:text-slate-400 text-lg mb-10 leading-relaxed">
-                    Automation workflows designed to streamline operations, accelerate processes, and support scalable business systems.
+                <p class="max-w-2xl text-slate-500 dark:text-slate-400 text-lg md:text-xl mb-10 leading-relaxed">
+                    I design practical AI workflows, no-code automations, and backend systems that help businesses move faster, stay organized, and reduce manual work.
                 </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mb-10">
+                    <div class="glass rounded-2xl p-5"><h3 class="text-4xl font-extrabold dark:text-white text-slate-900">40+</h3><p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Tools & platforms</p></div>
+                    <div class="glass rounded-2xl p-5"><h3 class="text-2xl font-extrabold dark:text-white text-slate-900 uppercase">Certified</h3><p class="text-slate-500 dark:text-slate-400 text-sm mt-1">AI & no-code automation</p></div>
+                    <div class="glass rounded-2xl p-5"><h3 class="text-4xl font-extrabold dark:text-white text-slate-900">6+</h3><p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Years operations support</p></div>
+                </div>
+
                 <div class="flex flex-wrap gap-4">
-                    <a href="#works" class="px-8 py-4 bg-slate-900 dark:bg-white dark:text-black text-white font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300">View Systems</a>
-                    <a href="#discovery-call" class="px-8 py-4 border border-pink-500/30 font-bold rounded-full hover:bg-pink-500/10 active:scale-95 transition-all duration-300">Book a Call</a>
+                    <a href="#discovery-call" class="px-7 py-3 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 active:scale-95 transition-all duration-300 shadow-lg shadow-pink-500/20">Book a Free Automation Audit <i class="fas fa-arrow-right ml-3"></i></a>
+                    <a href="#works" class="px-8 py-4 border border-pink-500/30 font-bold rounded-full hover:bg-pink-500/10 active:scale-95 transition-all duration-300">View My Work</a>
                 </div>
             </div>
-            
+
             <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
                 <div class="relative w-full max-w-lg">
                     <div class="absolute inset-0 bg-pink-500/20 blur-[120px] rounded-full"></div>
+
+                    
+
                     <img src="profile.png" alt="Jessa Sabian" class="relative z-10 w-full h-auto hero-image-mask grayscale-[5%] hover:grayscale-0 transition duration-700">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="py-28 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.6fr_1.4fr] gap-12 items-start">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mb-8">About Me</h2>
+                <div class="space-y-5 text-slate-500 dark:text-slate-400 text-base md:text-[17px] leading-relaxed max-w-3xl">
+                    <p>I’m Jessa — an AI Automation Specialist and Operations Support professional helping businesses reduce repetitive work using n8n, Zapier, Make.com, AI tools, and CRM workflows.</p>
+                    <p>My background in data entry, Google Ads operations, campaign setup, tracking workflows, and backend support helps me understand real operational bottlenecks — not just automate for the sake of automation.</p>
+                </div>
+                <div class="mt-8 border-l-2 border-pink-500 pl-6">
+                    <p class="text-lg md:text-xl font-extrabold dark:text-white text-slate-900">“If your team is losing time on repetitive tasks, I’ll help turn that process into a smarter system.”</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-[1.15fr_0.85fr] gap-8 items-center" data-aos="fade-left">
+
+                <div class="glass rounded-[2rem] p-8 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 font-bold dark:text-white text-slate-900 mb-6 whitespace-nowrap">
+                        <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+                        Available for Projects
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="border-t border-white/10 pt-5">
+                            <p class="text-xs uppercase tracking-widest text-slate-500 mb-2">Response Time</p>
+                            <p class="font-bold dark:text-white text-slate-900">Within 24 hours</p>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-5">
+                            <p class="text-xs uppercase tracking-widest text-slate-500 mb-2">Timezone</p>
+                            <p class="font-bold dark:text-white text-slate-900">UTC+8 (Philippines)</p>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-5">
+                            <p class="text-xs uppercase tracking-widest text-slate-500 mb-2">Location</p>
+                            <p class="font-bold dark:text-white text-slate-900">Philippines — Worldwide</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-center">
+                    <div class="absolute inset-0 bg-pink-500/20 blur-[100px] rounded-full"></div>
+                    <img src="profile.png" alt="Jessa Sabian" class="relative z-10 w-full max-w-xs h-auto hero-image-mask grayscale-[5%] hover:grayscale-0 transition duration-700">
+                </div>
+
             </div>
         </div>
     </section>
@@ -264,32 +326,59 @@
     <!-- Services -->
     <section id="services" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-20" data-aos="fade-up">Services</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div data-aos="fade-up" class="glass p-10 rounded-[2.5rem] border-transparent hover:border-pink-500/50 transition active:scale-95 cursor-pointer">
-                    <i class="fas fa-robot text-pink-500 text-3xl mb-6"></i>
-                    <h3 class="text-2xl font-bold dark:text-white mb-4">AI Automation Systems</h3>
-                    <p class="text-slate-500 dark:text-slate-400">Custom automation systems for lead flow, client communication, CRM updates, and operational efficiency.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px]">Services</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mt-4">What I Build For You</h2>
+                <p class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mt-4">Smart automation systems built so your business runs without you manually moving every task forward.</p>
+            </div>
+
+            <div class="glass rounded-[2.5rem] p-8 md:p-12 mb-8 grid lg:grid-cols-3 gap-8 items-center" data-aos="zoom-in">
+                <div class="lg:col-span-2">
+                    <span class="inline-block px-3 py-1 rounded-md bg-pink-500/10 border border-pink-500/20 text-pink-500 text-[10px] font-bold uppercase tracking-widest mb-4">Flagship Service</span>
+                    <h3 class="text-3xl font-extrabold dark:text-white text-slate-900 mb-4">AI Workflow Setup & Automation</h3>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">Your repetitive workflows connected into one system — leads, emails, files, forms, CRMs, documents, and follow-ups.</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm text-slate-500 dark:text-slate-400">
+                        <p><i class="fas fa-check text-pink-500 mr-2"></i> Lead capture & routing</p>
+                        <p><i class="fas fa-check text-pink-500 mr-2"></i> CRM updates & task creation</p>
+                        <p><i class="fas fa-check text-pink-500 mr-2"></i> Gmail, Drive & Sheets automations</p>
+                        <p><i class="fas fa-check text-pink-500 mr-2"></i> AI agents, chatbots & data parsing</p>
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="100" class="glass p-10 rounded-[2.5rem] border-transparent hover:border-pink-500/50 transition active:scale-95 cursor-pointer">
-                    <i class="fas fa-chart-line text-indigo-500 text-3xl mb-6"></i>
-                    <h3 class="text-2xl font-bold dark:text-white mb-4">Ad Operations Support</h3>
-                    <p class="text-slate-500 dark:text-slate-400">Campaign setup, backend tracking, reporting workflows, and scalable ad account operations.</p>
+                <div class="flex lg:justify-end">
+                    <a href="#discovery-call" class="px-7 py-3 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition active:scale-95 shadow-lg shadow-pink-500/20 whitespace-nowrap">Get a Workflow Plan <i class="fas fa-arrow-right ml-3"></i></a>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="glass p-10 rounded-[2.5rem] border-transparent hover:border-pink-500/50 transition active:scale-95 cursor-pointer">
-                    <i class="fas fa-tasks text-purple-500 text-3xl mb-6"></i>
-                    <h3 class="text-2xl font-bold dark:text-white mb-4">Process Optimization</h3>
-                    <p class="text-slate-500 dark:text-slate-400">Structured systems for repetitive workflows, records management, and digital business operations.</p>
-                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div data-aos="fade-up" class="glass p-8 rounded-[2rem] hover:border-pink-500/50 transition active:scale-95"><i class="fas fa-bolt text-pink-500 text-2xl mb-6"></i><h3 class="text-xl font-bold dark:text-white mb-3">Workflow Automation</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">End-to-end automations using n8n, Zapier, and Make.com to remove manual handoffs.</p></div>
+                <div data-aos="fade-up" data-aos-delay="100" class="glass p-8 rounded-[2rem] hover:border-pink-500/50 transition active:scale-95"><i class="fas fa-bullseye text-pink-500 text-2xl mb-6"></i><h3 class="text-xl font-bold dark:text-white mb-3">Lead Generation Pipelines</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Lead scoring, enrichment, follow-up sequences, and client-ready routing systems.</p></div>
+                <div data-aos="fade-up" data-aos-delay="200" class="glass p-8 rounded-[2rem] hover:border-pink-500/50 transition active:scale-95"><i class="fas fa-comments text-pink-500 text-2xl mb-6"></i><h3 class="text-xl font-bold dark:text-white mb-3">AI Chatbot & Voice Agent</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">AI assistants that answer questions, qualify leads, and support booking workflows.</p></div>
+                <div data-aos="fade-up" class="glass p-8 rounded-[2rem] hover:border-pink-500/50 transition active:scale-95"><i class="fas fa-code text-pink-500 text-2xl mb-6"></i><h3 class="text-xl font-bold dark:text-white mb-3">No-Code App Support</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Internal tools and client-facing workflows using no-code and low-code platforms.</p></div>
+                <div data-aos="fade-up" data-aos-delay="100" class="glass p-8 rounded-[2rem] hover:border-pink-500/50 transition active:scale-95"><i class="fas fa-share-nodes text-pink-500 text-2xl mb-6"></i><h3 class="text-xl font-bold dark:text-white mb-3">Content Automation</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Repurpose content and distribute it across channels using automated publishing workflows.</p></div>
+                <div data-aos="fade-up" data-aos-delay="200" class="glass p-8 rounded-[2rem] hover:border-pink-500/50 transition active:scale-95"><i class="fas fa-file-lines text-pink-500 text-2xl mb-6"></i><h3 class="text-xl font-bold dark:text-white mb-3">Process Documentation</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Clear SOPs and process maps so systems can be optimized, delegated, and automated.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 text-center mb-20" data-aos="fade-up">A Process Built for Results — Not Surprises.</h2>
+            <div class="grid md:grid-cols-4 gap-10 relative">
+                <div class="hidden md:block absolute top-10 left-[12%] right-[12%] h-px bg-pink-500/20"></div>
+                <div data-aos="fade-up" class="relative text-center"><div class="w-16 h-16 mx-auto rounded-full bg-pink-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-500/30 mb-6 relative z-10"><i class="fas fa-phone"></i></div><p class="text-xs text-slate-500 mb-3">Step 1</p><h3 class="text-xl font-extrabold dark:text-white mb-4">Discovery Call</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">We talk about your workflow, pain points, tools, and goals.</p></div>
+                <div data-aos="fade-up" data-aos-delay="100" class="relative text-center"><div class="w-16 h-16 mx-auto rounded-full bg-pink-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-500/30 mb-6 relative z-10"><i class="fas fa-clipboard-list"></i></div><p class="text-xs text-slate-500 mb-3">Step 2</p><h3 class="text-xl font-extrabold dark:text-white mb-4">Scope & Plan</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">I map the automation logic, tools, triggers, and timeline.</p></div>
+                <div data-aos="fade-up" data-aos-delay="200" class="relative text-center"><div class="w-16 h-16 mx-auto rounded-full bg-pink-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-500/30 mb-6 relative z-10"><i class="fas fa-wrench"></i></div><p class="text-xs text-slate-500 mb-3">Step 3</p><h3 class="text-xl font-extrabold dark:text-white mb-4">Build & Test</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">I build, test scenarios, fix edge cases, and verify results.</p></div>
+                <div data-aos="fade-up" data-aos-delay="300" class="relative text-center"><div class="w-16 h-16 mx-auto rounded-full bg-pink-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-500/30 mb-6 relative z-10"><i class="fas fa-circle-check"></i></div><p class="text-xs text-slate-500 mb-3">Step 4</p><h3 class="text-xl font-extrabold dark:text-white mb-4">Deliver & Support</h3><p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">You get the final workflow, walkthrough, and support after delivery.</p></div>
             </div>
         </div>
     </section>
 
     <!-- Tools -->
-    <section id="tools" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="tools" class="py-16 px-6 bg-slate-50/50 dark:bg-black/10">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6" data-aos="fade-up">Tools I Work With</h2>
-            <p class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-12" data-aos="fade-up" data-aos-delay="100">
+            <p class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-8" data-aos="fade-up" data-aos-delay="100">
                 Platforms and systems used to build automation workflows, AI agents, data pipelines, and operational support systems.
             </p>
 
@@ -447,7 +536,7 @@
 
 
     <!-- CTA After Projects -->
-    <section id="project-cta" class="py-24 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="project-cta" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
         <div class="max-w-6xl mx-auto glass rounded-[2rem] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left" data-aos="zoom-in" data-aos-duration="900" data-aos-easing="ease-out-back">
             <div data-aos="fade-right" data-aos-delay="150">
                 <h2 class="text-3xl md:text-4xl font-extrabold dark:text-white text-slate-900 mb-3">
@@ -458,7 +547,7 @@
                 </p>
             </div>
 
-            <a href="#discovery-call" data-aos="fade-left" data-aos-delay="250" class="px-8 py-4 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition active:scale-95 shadow-lg shadow-pink-500/20 whitespace-nowrap">
+            <a href="#discovery-call" data-aos="fade-left" data-aos-delay="250" class="px-7 py-3 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition active:scale-95 shadow-lg shadow-pink-500/20 whitespace-nowrap">
                 Book a Free Automation Strategy Call
                 <i class="fas fa-arrow-right ml-3"></i>
             </a>
@@ -517,40 +606,245 @@
         </div>
     </div>
 
+    <!-- FAQ -->
+    <section id="faq" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 text-center mb-16" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="space-y-3">
+                <details class="glass rounded-[2rem] p-6 group" data-aos="fade-up"><summary class="font-bold dark:text-white text-slate-900 cursor-pointer flex justify-between items-center">Do you offer revisions?<i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Yes. I include revisions based on the agreed scope so the final workflow matches the intended process.</p></details>
+                <details class="glass rounded-[2rem] p-6 group" data-aos="fade-up" data-aos-delay="75"><summary class="font-bold dark:text-white text-slate-900 cursor-pointer flex justify-between items-center">What happens if the automation breaks after delivery?<i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">I can provide post-delivery support, testing, and adjustments depending on the project agreement or maintenance plan.</p></details>
+                <details class="glass rounded-[2rem] p-6 group" data-aos="fade-up" data-aos-delay="100"><summary class="font-bold dark:text-white text-slate-900 cursor-pointer flex justify-between items-center">How long does a project take?<i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Simple workflows can take a few days. More complex systems with multiple tools, AI logic, or testing usually take longer.</p></details>
+                <details class="glass rounded-[2rem] p-6 group" data-aos="fade-up" data-aos-delay="125"><summary class="font-bold dark:text-white text-slate-900 cursor-pointer flex justify-between items-center">Do I need my own tool subscriptions?<i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Usually yes. You should own the accounts for tools like n8n, Zapier, Make.com, Google Workspace, Airtable, or CRM platforms.</p></details>
+                <details class="glass rounded-[2rem] p-6 group" data-aos="fade-up" data-aos-delay="150"><summary class="font-bold dark:text-white text-slate-900 cursor-pointer flex justify-between items-center">Can you build automations for my specific tool stack?<i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Yes. I can review your current tools and suggest the best automation path based on what you already use.</p></details>
+            </div>
+        </div>
+    </section>
+
     <!-- Discovery Call -->
-    <section id="discovery-call" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="discovery-call" class="py-24 px-6 bg-slate-50/50 dark:bg-black/10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mb-14" data-aos="fade-up" data-aos-duration="900">
+            <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mb-12" data-aos="fade-up">
                 Ready to remove operational <span class="gradient-text">friction?</span>
             </h2>
 
             <div class="grid lg:grid-cols-2 gap-8 items-start">
-                <div class="glass p-8 md:p-10 rounded-[2rem]" data-aos="fade-right" data-aos-delay="150" data-aos-duration="900">
-                    <h3 class="text-2xl md:text-3xl font-extrabold dark:text-white text-slate-900 mb-5">
-                        Book Your Free Automation Consultation
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-8">
-                        Let’s discuss how automation can save business time, reduce manual work, and improve operational efficiency.
-                    </p>
 
-                    <div class="space-y-5 text-slate-500 dark:text-slate-400 text-sm mb-8">
-                        <div class="flex items-center gap-4"><i class="far fa-clock text-pink-500"></i><span>30-minute strategy call</span></div>
-                        <div class="flex items-center gap-4"><i class="fas fa-video text-pink-500"></i><span>Video call through Calendly</span></div>
+                <div class="space-y-8">
+
+                    <div class="glass p-5 md:p-6 rounded-[1.6rem]" data-aos="fade-right">
+                        <span class="text-pink-500 font-bold tracking-[0.3em] uppercase text-[10px]">
+                            Book a Free Automation Audit
+                        </span>
+
+                        <h3 class="text-xl md:text-2xl font-extrabold dark:text-white text-slate-900 mt-3 mb-3">
+                            Let’s talk about your workflow.
+                        </h3>
+
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-5 text-sm">
+                            Pick a time that works for you. We’ll review your current process and identify practical automation opportunities.
+                        </p>
+
+                        <div class="space-y-2 text-slate-500 dark:text-slate-400 text-sm mb-4">
+                            <div class="flex items-center gap-4">
+                                <i class="far fa-clock text-pink-500"></i>
+                                <span>30-minute strategy call</span>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-video text-pink-500"></i>
+                                <span>Video call through Calendly</span>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-globe text-pink-500"></i>
+                                <span>UTC+8 Philippines</span>
+                            </div>
+                        </div>
+
+                        <h4 class="font-bold dark:text-white text-slate-900 mb-4 flex items-center gap-3">
+                            <i class="far fa-comment-alt text-pink-500"></i>
+                            What we’ll discuss
+                        </h4>
+
+                        <div class="space-y-2 text-slate-500 dark:text-slate-400 text-sm">
+                            <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Your current workflows</p>
+                            <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Automation opportunities</p>
+                            <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Implementation steps</p>
+                        </div>
                     </div>
 
-                    <h4 class="font-bold dark:text-white text-slate-900 mb-4 flex items-center gap-3">
-                        <i class="far fa-comment-alt text-pink-500"></i> What we’ll discuss
-                    </h4>
-                    <div class="space-y-3 text-slate-500 dark:text-slate-400 text-sm">
-                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Your current workflows</p>
-                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Automation opportunities</p>
-                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Recommended automation solutions</p>
-                        <p><i class="far fa-check-circle text-pink-500 mr-2"></i>Implementation steps</p>
-                    </div>
+                    <form 
+                        class="glass p-5 md:p-6 rounded-[1.6rem]" 
+                        data-aos="fade-up"
+                        action="https://docs.google.com/forms/d/e/1FAIpQLSdBrQX3X-Y_hcJuGotnpDnkO0Pl5-l9NIvpnxi8MMnEfdAxDw/formResponse"
+                        method="POST"
+                        target="hidden_google_form"
+                        @submit="setTimeout(() => {
+                            workflowStep = 1;
+                            $el.reset();
+                            alert('Your workflow details were submitted successfully.');
+                        }, 600)"
+                    >
+                        <input type="hidden" name="pageHistory" value="0,1">
+
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-pink-500 font-bold tracking-[0.3em] uppercase text-[10px]">
+                                    Tell me about your project
+                                </span>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2" x-text="workflowStep === 1 ? 'Step 1 of 2 — Contact Details' : 'Step 2 of 2 — Workflow Details'"></p>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <button 
+                                    type="button"
+                                    x-show="workflowStep === 2"
+                                    x-transition
+                                    @click="workflowStep = 1"
+                                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-pink-500 hover:text-white transition"
+                                    title="Back to contact details"
+                                >
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+
+                                <button 
+                                    type="button"
+                                    x-show="workflowStep === 1"
+                                    x-transition
+                                    @click="workflowStep = 2"
+                                    class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-pink-500 hover:text-white transition"
+                                    title="Continue to workflow details"
+                                >
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl md:text-2xl font-extrabold dark:text-white text-slate-900 mt-3 mb-4">
+                            Submit Your Workflow
+                        </h3>
+
+                        <!-- Section 1 -->
+                        <div x-show="workflowStep === 1" x-transition class="space-y-3">
+                            <input 
+                                name="entry.183514090"
+                                type="text" 
+                                required
+                                placeholder="Your full name" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            >
+
+                            <input 
+                                name="entry.1498078436"
+                                type="email" 
+                                required
+                                placeholder="Email address" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            >
+
+                            <input 
+                                name="entry.2058691133"
+                                type="text" 
+                                required
+                                placeholder="Phone number / WhatsApp" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            >
+
+                            <input 
+                                name="entry.765793306"
+                                type="text" 
+                                required
+                                placeholder="Business / Company Name" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            >
+
+                            <select 
+                                name="entry.876246571"
+                                required
+                                @change="if ($event.target.value) workflowStep = 2"
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            >
+                                <option value="">What service do you need?</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Workflow Automation">Workflow Automation</option>
+                                <option value="AI Chatbot / Agent">AI Chatbot / Agent</option>
+                                <option value="CRM / Lead Automation">CRM / Lead Automation</option>
+                                <option value="Google Workspace Automation">Google Workspace Automation</option>
+                                <option value="Content Automation">Content Automation</option>
+                                <option value="Not sure yet">Not sure yet</option>
+                            </select>
+
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                                Selecting a service will move you to the next section.
+                            </p>
+                        </div>
+
+                        <!-- Section 2 -->
+                        <div x-show="workflowStep === 2" x-transition class="space-y-3">
+                            <textarea 
+                                name="entry.1132871582"
+                                rows="2"
+                                required
+                                placeholder="What repetitive task or workflow is slowing you down?" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            ></textarea>
+
+                            <textarea 
+                                name="entry.87362788"
+                                rows="2"
+                                required
+                                placeholder="What tools/apps are you currently using?" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            ></textarea>
+
+                            <textarea 
+                                name="entry.854942608"
+                                rows="2"
+                                required
+                                placeholder="What result do you want from this automation?" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            ></textarea>
+
+                            <select 
+                                name="entry.1731860452"
+                                required
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            >
+                                <option value="">Do you already have a deadline?</option>
+                                <option value="ASAP">ASAP</option>
+                                <option value="Within 1 week">Within 1 week</option>
+                                <option value="Within 2–4 weeks">Within 2–4 weeks</option>
+                                <option value="No deadline yet">No deadline yet</option>
+                            </select>
+
+                            <textarea 
+                                name="entry.184619561"
+                                rows="2"
+                                required
+                                placeholder="Anything else I should know?" 
+                                class="w-full px-4 py-2.5 rounded-xl bg-white/70 dark:bg-black/35 border border-white/10 outline-none focus:border-pink-500 transition"
+                            ></textarea>
+
+                            <button 
+                                type="submit"
+                                class="inline-block w-full text-center px-7 py-3 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-400 transition active:scale-95 shadow-lg shadow-pink-500/20"
+                            >
+                                Send Workflow Details
+                            </button>
+
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 text-center">
+                                Need to edit your contact details? Use the arrow above.
+                            </p>
+                        </div>
+                    </form>
+                    <iframe name="hidden_google_form" class="hidden"></iframe>
                 </div>
 
-                <div class="glass rounded-[2rem] p-3 md:p-4 overflow-hidden shadow-2xl" data-aos="zoom-in" data-aos-delay="250" data-aos-duration="900">
-                    <iframe src="https://calendly.com/sabianjessa05/30min?hide_gdpr_banner=1" class="w-full h-[720px] rounded-[1.5rem] bg-white" frameborder="0"></iframe>
+                <div class="glass rounded-[2rem] p-3 overflow-hidden shadow-2xl h-full" data-aos="zoom-in">
+                    <iframe src="https://calendly.com/sabianjessa05/30min?hide_gdpr_banner=1"
+                        class="w-full h-[620px] rounded-[1.5rem] bg-white"
+                        frameborder="0">
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -579,11 +873,14 @@
             <div>
                 <h3 class="text-pink-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-8">Navigate</h3>
                 <div class="space-y-5 text-slate-500 dark:text-slate-400 font-medium">
-                    <a href="#works" class="block hover:text-pink-500 transition">Work</a>
+                    <a href="#about" class="block hover:text-pink-500 transition">About</a>
                     <a href="#services" class="block hover:text-pink-500 transition">Services</a>
+                    <a href="#process" class="block hover:text-pink-500 transition">Process</a>
                     <a href="#tools" class="block hover:text-pink-500 transition">Tools</a>
                     <a href="#experience" class="block hover:text-pink-500 transition">Experience</a>
+                    <a href="#works" class="block hover:text-pink-500 transition">Work</a>
                     <a href="#certificates" class="block hover:text-pink-500 transition">Certificates</a>
+                    <a href="#faq" class="block hover:text-pink-500 transition">FAQ</a>
                     <a href="#discovery-call" class="block hover:text-pink-500 transition">Discovery Call</a>
                 </div>
             </div>
@@ -674,6 +971,7 @@
                 fullscreenOpen: false,
                 certificateModalOpen: false,
                 activeCertificate: {},
+                workflowStep: 1,
 
                 toggleTheme() { 
                     this.darkMode = !this.darkMode; 
