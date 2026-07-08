@@ -145,7 +145,7 @@
                 opacity: 0; 
             } 
         }
-    /* Moving Tools Marquee */
+/* Moving Tools Marquee */
 .marquee {
     overflow: hidden;
     position: relative;
@@ -156,7 +156,7 @@
     display: flex;
     flex-wrap: nowrap;
     width: max-content;
-    animation: scrollRight 35s linear infinite;
+    animation: scrollRight 80s linear infinite;
     gap: 1rem;
     will-change: transform;
 }
@@ -166,9 +166,14 @@
     flex-shrink: 0;
 }
 
+
+/* Removed hover pause */
+/*
 .marquee:hover .marquee-track {
     animation-play-state: paused;
 }
+*/
+
 
 @keyframes scrollRight {
     from {
@@ -178,6 +183,7 @@
         transform: translateX(0%);
     }
 }
+
 
 .marquee-left {
     overflow: hidden;
@@ -189,7 +195,7 @@
     display: flex;
     flex-wrap: nowrap;
     width: max-content;
-    animation: scrollLeft 35s linear infinite;
+    animation: scrollLeft 80s linear infinite;
     gap: 1rem;
     will-change: transform;
 }
@@ -199,9 +205,14 @@
     flex-shrink: 0;
 }
 
+
+/* Removed hover pause */
+/*
 .marquee-left:hover .marquee-left-track {
     animation-play-state: paused;
 }
+*/
+
 
 @keyframes scrollLeft {
     from {
@@ -212,6 +223,24 @@
     }
 }
 
+
+/* Tools Glass Effect */
+.marquee-track > div,
+.marquee-left-track > div {
+    background: rgba(255,255,255,0.80);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.20);
+}
+
+
+/* Dark Mode Tools */
+.dark .marquee-track > div,
+.dark .marquee-left-track > div {
+    background: rgba(30,41,59,0.80);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+        
 /* Responsive polish */
 html {
     scroll-behavior: smooth;
@@ -639,176 +668,168 @@ section {
 
     <div class="max-w-7xl mx-auto text-center">
 
-        <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6" data-aos="fade-up">
+        <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6"
+            data-aos="fade-up">
             Tools I Work With
         </h2>
 
-        <p class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-8" data-aos="fade-up" data-aos-delay="100">
+        <p class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-8"
+           data-aos="fade-up"
+           data-aos-delay="100">
             Platforms and systems used to build automation workflows, AI agents, data pipelines, and operational support systems.
         </p>
 
 
-        <!-- ========================= -->
-        <!-- FIRST ROW - MOVING RIGHT -->
-        <!-- ========================= -->
-
+        <!-- First Row Moving Right -->
         <div class="marquee mt-10" data-aos="fade-up" data-aos-delay="200">
-
             <div class="marquee-track">
 
 
-                <!-- ========================= -->
-                <!-- SET 1 START -->
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
-                <!-- ========================= -->
+                <!-- ===================== -->
+                <!-- SET 1 START HERE -->
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
+                <!-- ===================== -->
 
 
 
-                <!-- ========================= -->
-                <!-- DUPLICATE SET 1 START -->
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
-                <!-- ========================= -->
-
+                <!-- ===================== -->
+                <!-- DUPLICATE SET 1 HERE -->
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
+                <!-- ===================== -->
 
 
             </div>
-
         </div>
 
 
 
-        <!-- ========================= -->
-        <!-- SECOND ROW - MOVING LEFT -->
-        <!-- ========================= -->
-
+        <!-- Second Row Moving Left -->
         <div class="marquee-left mt-6" data-aos="fade-up" data-aos-delay="300">
-
             <div class="marquee-left-track">
 
 
-                <!-- ========================= -->
-                <!-- SET 2 START -->
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
-                <!-- ========================= -->
+                <!-- ===================== -->
+                <!-- SET 2 START HERE -->
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
+                <!-- ===================== -->
 
 
 
-                <!-- ========================= -->
-                <!-- DUPLICATE SET 2 START -->
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
-                <div class="px-6 py-4 bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
-                    <!-- ========================= -->
+                <!-- ===================== -->
+                <!-- DUPLICATE SET 2 HERE -->
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gemini-logo.png" alt="" class="w-5 h-5 object-contain"> Google Gemini AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="grok-logo.png" alt="" class="w-5 h-5 object-contain"> Grok AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="openrouter-logo.png" alt="" class="w-5 h-5 object-contain"> OpenRouter</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vapi-logo.png" alt="" class="w-5 h-5 object-contain"> Vapi AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="supabase-logo.png" alt="" class="w-5 h-5 object-contain"> Supabase</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="vertex-ai-logo.png" alt="" class="w-5 h-5 object-contain"> Google Vertex AI</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="airtable-logo.png" alt="" class="w-5 h-5 object-contain"> Airtable</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="sheets-logo.png" alt="" class="w-5 h-5 object-contain"> Google Sheets</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="drive-logo.png" alt="" class="w-5 h-5 object-contain"> Google Drive</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="docs-logo.png" alt="" class="w-5 h-5 object-contain"> Google Docs</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slides-logo.png" alt="" class="w-5 h-5 object-contain"> Google Slides</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="gmail-logo.png" alt="" class="w-5 h-5 object-contain"> Gmail</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="google-calendar-logo.png" alt="" class="w-5 h-5 object-contain"> Google Calendar</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="asana-logo.png" alt="" class="w-5 h-5 object-contain"> Asana</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="xero-logo.png" alt="" class="w-5 h-5 object-contain"> Xero</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="typeform-logo.png" alt="" class="w-5 h-5 object-contain"> Typeform</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="apollo-logo.png" alt="" class="w-5 h-5 object-contain"> Apollo</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="slack-logo.png" alt="" class="w-5 h-5 object-contain"> Slack</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="facebook-logo.png" alt="" class="w-5 h-5 object-contain"> Facebook Pages</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="linkedin-logo.png" alt="" class="w-5 h-5 object-contain"> LinkedIn</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="calendly-logo.png" alt="" class="w-5 h-5 object-contain"> Calendly</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="javascript-logo.png" alt="" class="w-5 h-5 object-contain"> JavaScript</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="api-logo.png" alt="" class="w-5 h-5 object-contain"> API Integration</div>
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="webhook-logo.png" alt="" class="w-5 h-5 object-contain"> Webhooks</div>
+                <!-- ===================== -->
 
 
             </div>
-
         </div>
 
 
