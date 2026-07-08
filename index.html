@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="portfolioLogic()" :class="darkMode ? 'dark' : ''">
+<html lang="en" x-data="portfolioLogic()" :class="darkMode ? 'dark' : 'light'">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1358,7 +1358,7 @@ section {
     <script>
         function portfolioLogic() {
             return {
-                darkMode: true,
+                darkMode: false,
                 modalOpen: false,
                 activeProject: {},
                 fullscreenImage: '',
@@ -1366,9 +1366,14 @@ section {
                 certificateModalOpen: false,
                 activeCertificate: {},
                 workflowStep: 1,
-
+                
+                 init() {
+                this.darkMode = localStorage.getItem('darkMode') === 'true';
+                },
+                
                 toggleTheme() { 
-                    this.darkMode = !this.darkMode; 
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('darkMode', this.darkMode);
                 },
 
                 openFullscreen(img) {
