@@ -166,13 +166,10 @@
     flex-shrink: 0;
 }
 
-
-/* Removed hover pause */
-/*
+/* Pause when cursor is on tools */
 .marquee:hover .marquee-track {
     animation-play-state: paused;
 }
-*/
 
 
 @keyframes scrollRight {
@@ -183,7 +180,6 @@
         transform: translateX(0%);
     }
 }
-
 
 .marquee-left {
     overflow: hidden;
@@ -206,12 +202,10 @@
 }
 
 
-/* Removed hover pause */
-/*
+/* Pause when cursor is on tools */
 .marquee-left:hover .marquee-left-track {
     animation-play-state: paused;
 }
-*/
 
 
 @keyframes scrollLeft {
@@ -223,22 +217,21 @@
     }
 }
 
-
 /* Tools Glass Effect */
 .marquee-track > div,
 .marquee-left-track > div {
-    background: rgba(255,255,255,0.80);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.20);
+    border: 1px solid rgba(255,255,255,0.30);
 }
 
-
-/* Dark Mode Tools */
+/* Dark Mode Tools - Keep Cards Light for Logo Visibility */
 .dark .marquee-track > div,
 .dark .marquee-left-track > div {
-    background: rgba(30,41,59,0.80);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255,255,255,0.40);
+    color: #111827;
 }
         
 /* Responsive polish */
