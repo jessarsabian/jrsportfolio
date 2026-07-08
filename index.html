@@ -874,70 +874,139 @@ section {
 
 
 
-    <!-- Project Modal -->
-    <div x-show="modalOpen" x-transition x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-white/95 dark:bg-black/95 backdrop-blur-xl">
-        <button @click="modalOpen = false" class="absolute top-6 right-6 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition z-[120]">
-            <i class="fas fa-times-circle"></i>
-        </button>
+   <!-- Project Modal -->
+<div x-show="modalOpen"
+     x-transition
+     x-cloak
+     class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-white/95 dark:bg-black/95 backdrop-blur-xl">
 
-        <div class="max-w-7xl w-full max-h-full overflow-y-auto grid lg:grid-cols-2 gap-10 p-4 md:p-8"
-             @click.away="modalOpen = false">
+    <button @click="modalOpen = false"
+            class="absolute top-6 right-6 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition z-[120]">
+        <i class="fas fa-times-circle"></i>
+    </button>
 
-            <div class="relative">
-                <div class="glass rounded-[2rem] p-3 relative overflow-hidden">
-                    <img :src="activeProject.images ? activeProject.images[0] : ''"
-                         class="w-full rounded-[1.5rem] object-contain max-h-[650px]">
 
-                    <button @click="openFullscreen(activeProject.images[0])"
-                            class="absolute top-6 right-6 bg-black/60 text-white px-4 py-3 rounded-full hover:bg-pink-500 transition">
-                        <i class="fas fa-expand"></i>
-                    </button>
-                </div>
+    <div class="max-w-7xl w-full max-h-[90vh] 
+                flex flex-col lg:flex-row 
+                gap-10 
+                bg-white/80 dark:bg-black/40
+                backdrop-blur-xl
+                rounded-[2.5rem]
+                p-8
+                overflow-hidden
+                border border-white/20"
+         @click.away="modalOpen = false">
+
+
+        <!-- IMAGE SIDE -->
+        <div class="w-full lg:w-1/2 flex items-center justify-center">
+
+            <div class="glass rounded-[2rem] p-3 relative">
+
+                <img :src="activeProject.images ? activeProject.images[0] : ''"
+                     class="max-h-[70vh] w-auto max-w-full object-contain rounded-[1.5rem]">
+
+
+                <button @click="openFullscreen(activeProject.images[0])"
+                        class="absolute top-5 right-5 bg-black/60 text-white px-4 py-3 rounded-full hover:bg-pink-500 transition">
+                    <i class="fas fa-expand"></i>
+                </button>
+
             </div>
 
-            <div class="flex flex-col justify-center">
-                <span class="text-pink-500 font-bold uppercase tracking-widest text-xs"
-                      x-text="activeProject.tool"></span>
-
-                <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-8"
-                    x-text="activeProject.title"></h2>
-
-                <div class="space-y-5">
-
-                    <div>
-                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">Problem</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            Manual processes required repetitive work, multiple handoffs, and unnecessary time spent managing tasks.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">How it works</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed" x-text="activeProject.desc"></p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">Solution</h3>
-                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                            Built an automated workflow that connects tools, processes information, and reduces manual execution.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-3">Tools Used</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <template x-for="app in activeProject.apps" :key="app">
-                                <span class="px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-500 text-xs font-bold"
-                                      x-text="app"></span>
-                            </template>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
+
+
+
+        <!-- DESCRIPTION SIDE -->
+        <div class="w-full lg:w-1/2 
+                    flex flex-col justify-center
+                    overflow-y-auto
+                    max-h-[75vh]
+                    pr-3">
+
+
+            <span class="text-pink-500 font-bold uppercase tracking-widest text-xs"
+                  x-text="activeProject.tool">
+            </span>
+
+
+            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-8"
+                x-text="activeProject.title">
+            </h2>
+
+
+
+            <div class="space-y-6">
+
+
+                <div>
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
+                        Problem
+                    </h3>
+
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                        Manual processes required repetitive work, multiple handoffs, and unnecessary time spent managing tasks.
+                    </p>
+                </div>
+
+
+
+                <div>
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
+                        How it works
+                    </h3>
+
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed"
+                       x-text="activeProject.desc">
+                    </p>
+                </div>
+
+
+
+                <div>
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
+                        Solution
+                    </h3>
+
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+                        Built an automated workflow that connects tools, processes information, and reduces manual execution.
+                    </p>
+                </div>
+
+
+
+                <div>
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-3">
+                        Tools Used
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2">
+
+                        <template x-for="app in activeProject.apps" :key="app">
+
+                            <span class="px-4 py-2 rounded-full
+                                         bg-pink-500/10
+                                         border border-pink-500/20
+                                         text-pink-500
+                                         text-xs font-bold"
+                                  x-text="app">
+                            </span>
+
+                        </template>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
     </div>
 
+</div>
     <!-- CTA After Projects -->
     <section id="project-cta" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
         <div class="max-w-6xl mx-auto glass rounded-[2rem] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left" data-aos="zoom-in" data-aos-duration="900" data-aos-easing="ease-out-back">
@@ -986,7 +1055,7 @@ section {
         </button>
 
         <div class="max-w-7xl w-full h-full flex flex-col lg:flex-row gap-12 pt-20 lg:pt-0 overflow-y-auto" @click.away="certificateModalOpen = false">
-            <div class="w-full lg:w-2/3 overflow-y-auto space-y-6 pr-4 image-container">
+            <div class="w-full lg:w-2/3 flex items-center justify-center overflow-y-auto space-y-6 pr-4">
                 <div class="glass p-2 rounded-3xl relative group">
                     <img :src="activeCertificate.image" :alt="activeCertificate.title" class="w-full h-auto rounded-2xl shadow-xl">
                 </div>
@@ -1111,7 +1180,7 @@ section {
 
                 <div class="mt-10 flex flex-row items-center gap-4 flex-wrap">
 
-    <a href="#discovery"
+    <a href="#discovery-call"
        class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full 
        bg-pink-500 text-white font-bold 
        shadow-lg shadow-pink-500/30
@@ -1126,7 +1195,7 @@ section {
     </a>
 
 
-    <a href="#projects"
+    <a href="#works"
        class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full 
        bg-white/10 dark:bg-white/10
        backdrop-blur-xl
