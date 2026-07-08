@@ -873,178 +873,167 @@ section {
     </section>
 
 
-
-   <!-- Project Modal -->
-<!-- Project Modal -->
-<div x-show="modalOpen"
-     x-cloak
-     class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/20 backdrop-blur-sm">
-
-
-    <!-- Close Project Modal -->
-    <button @click="modalOpen = false"
-            class="absolute top-6 right-6 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition z-[120]">
-        <i class="fas fa-times-circle"></i>
-    </button>
-
-
-
-    <div class="max-w-7xl w-full max-h-[90vh] 
-                flex flex-col lg:flex-row 
-                gap-10
-                overflow-hidden"
-         @click.stop>
-
-
-
-        <!-- IMAGE -->
-        <div class="w-full lg:w-1/2 flex items-center justify-center">
-
-            <div class="relative glass rounded-[2rem] p-3">
-
-                <img :src="activeProject.images ? activeProject.images[0] : ''"
-                     class="rounded-[1.5rem] object-contain max-h-[70vh] w-auto">
-
-
-                <!-- Fullscreen Button -->
-                <button 
-                    @click="openFullscreen(activeProject.images[0])"
-                    class="absolute top-5 right-5 bg-black/60 text-white px-4 py-3 rounded-full hover:bg-pink-500 transition">
-
-                    <i class="fas fa-expand"></i>
-
-                </button>
-
-
+      <!-- Project Modal -->
+    <div x-show="modalOpen"
+         x-cloak
+         x-transition:enter="transition ease-out duration-500"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
+         class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/30 backdrop-blur-sm">
+    
+    
+        <!-- Close -->
+        <button @click="modalOpen = false"
+                class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition z-[120]">
+            <i class="fas fa-times-circle"></i>
+        </button>
+    
+        <div class="max-w-7xl w-full max-h-[90vh]
+                    flex flex-col lg:flex-row
+                    gap-10
+                    overflow-hidden"
+             @click.stop>
+    
+            <!-- IMAGE SIDE -->
+            <div class="w-full lg:w-1/2 flex items-center justify-center">
+    
+                <div class="glass rounded-[2rem] p-3 relative">
+    
+                    <img :src="activeProject.images ? activeProject.images[0] : ''"
+                         class="rounded-[1.5rem] object-contain max-h-[70vh] w-auto">
+    
+    
+                    <button 
+                        @click="openFullscreen(activeProject.images[0])"
+                        class="absolute top-5 right-5 bg-black/70 text-white px-4 py-3 rounded-full hover:bg-pink-500 transition">
+    
+                        <i class="fas fa-expand"></i>
+    
+                    </button>
+    
+                </div>
+    
             </div>
-
-        </div>
-
-
-
-
-        <!-- DESCRIPTION -->
-        <div class="w-full lg:w-1/2 
-                    overflow-y-auto 
-                    max-h-[75vh]
-                    flex flex-col justify-center">
-
-
-            <span class="text-pink-500 font-bold uppercase tracking-widest text-xs"
-                  x-text="activeProject.tool">
-            </span>
-
-
-
-            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-8"
-                x-text="activeProject.title">
-            </h2>
-
-
-
-
-            <div class="space-y-6">
-
-
-                <div>
-                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
-                        Problem
-                    </h3>
-
-                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                        Manual processes required repetitive work, multiple handoffs, and unnecessary time spent managing tasks.
-                    </p>
-                </div>
-
-
-
-
-                <div>
-                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
-                        How It Works
-                    </h3>
-
-                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed"
-                       x-text="activeProject.desc">
-                    </p>
-                </div>
-
-
-
-
-                <div>
-                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
-                        Solution
-                    </h3>
-
-                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-                        Built an automated workflow that connects tools, processes information, and reduces manual execution.
-                    </p>
-                </div>
-
-
-
-
-                <div>
-
-                    <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-3">
-                        Tools Used
-                    </h3>
-
-
-                    <div class="flex flex-wrap gap-2">
-
-                        <template x-for="app in activeProject.apps" :key="app">
-
-                            <span class="px-4 py-2 rounded-full
-                                         bg-pink-500/10
-                                         border border-pink-500/20
-                                         text-pink-500
-                                         text-xs font-bold"
-                                  x-text="app">
-                            </span>
-
-                        </template>
-
-
+    
+            <!-- DESCRIPTION PANEL -->
+            <div class="w-full lg:w-1/2
+                        max-h-[75vh]
+                        overflow-y-auto
+                        flex flex-col justify-center
+                        bg-black/70
+                        backdrop-blur-xl
+                        rounded-[2rem]
+                        p-8
+                        border border-white/10
+                        shadow-2xl">
+    
+    
+                <span class="text-pink-400 font-bold uppercase tracking-widest text-xs"
+                      x-text="activeProject.tool">
+                </span>
+    
+                <h2 class="text-4xl font-extrabold text-white mt-4 mb-8"
+                    x-text="activeProject.title">
+                </h2>
+    
+                <div class="space-y-6">
+    
+                    <div>
+                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-400 mb-2">
+                            Problem
+                        </h3>
+    
+                        <p class="text-white/80 leading-relaxed">
+                            Manual processes required repetitive work, multiple handoffs, and unnecessary time spent managing tasks.
+                        </p>
                     </div>
-
+    
+                    <div>
+                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-400 mb-2">
+                            How It Works
+                        </h3>
+    
+                        <p class="text-white/80 leading-relaxed"
+                           x-text="activeProject.desc">
+                        </p>
+                    </div>
+    
+    
+                    <div>
+                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-400 mb-2">
+                            Solution
+                        </h3>
+    
+                        <p class="text-white/80 leading-relaxed">
+                            Built an automated workflow that connects tools, processes information, and reduces manual execution.
+                        </p>
+                    </div>
+    
+    
+                    <div>
+    
+                        <h3 class="text-sm uppercase tracking-widest font-bold text-pink-400 mb-3">
+                            Tools Used
+                        </h3>
+    
+    
+                        <div class="flex flex-wrap gap-2">
+    
+                            <template x-for="app in activeProject.apps" :key="app">
+    
+                                <span class="px-4 py-2 rounded-full
+                                             bg-pink-500/10
+                                             border border-pink-500/30
+                                             text-pink-300
+                                             text-xs font-bold"
+                                      x-text="app">
+                                </span>
+    
+                            </template>
+    
+                        </div>
+    
+                    </div>
+    
+    
                 </div>
-
-
+    
+    
             </div>
-
-
+    
+    
         </div>
-
-
+    
     </div>
 
-
-</div>
-
-
-<!-- Fullscreen Image Viewer -->
+<!-- Fullscreen Image -->
 <div x-show="fullscreenOpen"
      x-cloak
+     x-transition:enter="transition ease-out duration-400"
+     x-transition:enter-start="opacity-0 scale-95"
+     x-transition:enter-end="opacity-100 scale-100"
+     x-transition:leave="transition ease-in duration-300"
+     x-transition:leave-start="opacity-100 scale-100"
+     x-transition:leave-end="opacity-0 scale-95"
      class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6">
 
 
     <button 
         @click="fullscreenOpen = false; modalOpen = true"
-        class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition z-[210]">
+        class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition">
 
         <i class="fas fa-times-circle"></i>
 
     </button>
-
 
 
     <img :src="fullscreenImage"
          class="max-w-full max-h-full object-contain rounded-2xl">
 
 </div>
-
     
     <!-- CTA After Projects -->
     <section id="project-cta" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
