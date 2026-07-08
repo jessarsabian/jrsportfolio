@@ -875,42 +875,46 @@ section {
 
 
    <!-- Project Modal -->
+<!-- Project Modal -->
 <div x-show="modalOpen"
-     x-transition
      x-cloak
-     class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-white/95 dark:bg-black/95 backdrop-blur-xl">
+     class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/20 backdrop-blur-sm">
 
+
+    <!-- Close Project Modal -->
     <button @click="modalOpen = false"
             class="absolute top-6 right-6 text-slate-900 dark:text-white text-5xl hover:text-pink-500 transition z-[120]">
         <i class="fas fa-times-circle"></i>
     </button>
 
 
+
     <div class="max-w-7xl w-full max-h-[90vh] 
                 flex flex-col lg:flex-row 
-                gap-10 
-                bg-white/80 dark:bg-black/40
-                backdrop-blur-xl
-                rounded-[2.5rem]
-                p-8
-                overflow-hidden
-                border border-white/20"
-         @click.away="modalOpen = false">
+                gap-10
+                overflow-hidden"
+         @click.stop>
 
 
-        <!-- IMAGE SIDE -->
+
+        <!-- IMAGE -->
         <div class="w-full lg:w-1/2 flex items-center justify-center">
 
-            <div class="glass rounded-[2rem] p-3 relative">
+            <div class="relative glass rounded-[2rem] p-3">
 
                 <img :src="activeProject.images ? activeProject.images[0] : ''"
-                     class="max-h-[70vh] w-auto max-w-full object-contain rounded-[1.5rem]">
+                     class="rounded-[1.5rem] object-contain max-h-[70vh] w-auto">
 
 
-                <button @click="openFullscreen(activeProject.images[0])"
-                        class="absolute top-5 right-5 bg-black/60 text-white px-4 py-3 rounded-full hover:bg-pink-500 transition">
+                <!-- Fullscreen Button -->
+                <button 
+                    @click="openFullscreen(activeProject.images[0])"
+                    class="absolute top-5 right-5 bg-black/60 text-white px-4 py-3 rounded-full hover:bg-pink-500 transition">
+
                     <i class="fas fa-expand"></i>
+
                 </button>
+
 
             </div>
 
@@ -918,12 +922,12 @@ section {
 
 
 
-        <!-- DESCRIPTION SIDE -->
+
+        <!-- DESCRIPTION -->
         <div class="w-full lg:w-1/2 
-                    flex flex-col justify-center
-                    overflow-y-auto
+                    overflow-y-auto 
                     max-h-[75vh]
-                    pr-3">
+                    flex flex-col justify-center">
 
 
             <span class="text-pink-500 font-bold uppercase tracking-widest text-xs"
@@ -931,9 +935,11 @@ section {
             </span>
 
 
+
             <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-8"
                 x-text="activeProject.title">
             </h2>
+
 
 
 
@@ -952,15 +958,17 @@ section {
 
 
 
+
                 <div>
                     <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-2">
-                        How it works
+                        How It Works
                     </h3>
 
                     <p class="text-slate-500 dark:text-slate-400 leading-relaxed"
                        x-text="activeProject.desc">
                     </p>
                 </div>
+
 
 
 
@@ -976,10 +984,13 @@ section {
 
 
 
+
                 <div>
+
                     <h3 class="text-sm uppercase tracking-widest font-bold text-pink-500 mb-3">
                         Tools Used
                     </h3>
+
 
                     <div class="flex flex-wrap gap-2">
 
@@ -995,6 +1006,7 @@ section {
 
                         </template>
 
+
                     </div>
 
                 </div>
@@ -1002,11 +1014,38 @@ section {
 
             </div>
 
+
         </div>
+
 
     </div>
 
+
 </div>
+
+
+<!-- Fullscreen Image Viewer -->
+<div x-show="fullscreenOpen"
+     x-cloak
+     class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6">
+
+
+    <button 
+        @click="fullscreenOpen = false; modalOpen = true"
+        class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition z-[210]">
+
+        <i class="fas fa-times-circle"></i>
+
+    </button>
+
+
+
+    <img :src="fullscreenImage"
+         class="max-w-full max-h-full object-contain rounded-2xl">
+
+</div>
+
+    
     <!-- CTA After Projects -->
     <section id="project-cta" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
         <div class="max-w-6xl mx-auto glass rounded-[2rem] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left" data-aos="zoom-in" data-aos-duration="900" data-aos-easing="ease-out-back">
