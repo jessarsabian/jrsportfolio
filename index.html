@@ -1679,18 +1679,66 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
 
 
                 automationGroups: [
-                    {
-                        platform:'n8n',
-                        logo:'n8n1-logo.png',
-                        description:'AI workflow automation platform for intelligent business systems.',
-                        projects:[
-                            {title:'AI Agent for Facebook', images:['6. AI Agent for Facebook (n8n 1).png'], summary:'AI customer support and response automation.', problem:'Manual Facebook responses create delays and inconsistent customer handling.', how:'n8n connects Facebook messages with AI models and memory workflows.', solution:'Automated AI-powered customer communication system.', tools:['n8n','Facebook Graph API','Google Gemini']},
-                            {title:'AI Jobs Scraper + Resume Optimizer', images:['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'], summary:'AI job search and resume optimization workflow.', problem:'Searching and customizing applications manually consumes time.', how:'The workflow collects jobs, analyzes requirements, and generates optimized resumes.', solution:'Automated job discovery and application preparation system.', tools:['n8n','RapidAPI','OpenRouter','Google Docs']},
-                            {title:'ASMR Remake', images:['8. ASMR Remake (n8n 3).png'], summary:'AI content creation pipeline.', problem:'Content production requires repetitive manual steps.', how:'AI generates scripts, assets, and publishing workflows.', solution:'Automated short-form content production.', tools:['n8n','Google Gemini AI','YouTube API']},
-                            {title:'AI Receptionist', images:['9. AI Receptionist (n8n 4).png'], summary:'Voice AI appointment automation.', problem:'Manual appointment scheduling causes missed opportunities.', how:'Voice AI handles calls, calendars, and customer requests.', solution:'Automated booking assistant.', tools:['n8n','Vapi AI','Google Calendar','Airtable']},
-                            {title:'RAG Agent', images:['10. RAG Agent (n8n 5).png'], summary:'Document intelligence AI workflow.', problem:'Finding internal information manually is inefficient.', how:'Documents are processed through retrieval augmented generation.', solution:'AI knowledge assistant using company data.', tools:['n8n','Supabase','Google Gemini AI']}
-                        ]
-                    },
+                   {
+    platform:'n8n',
+    logo:'n8n1-logo.png',
+    description:'AI workflow automation platform for intelligent business systems.',
+    projects:[
+        {
+            title:'AI Agent for Facebook',
+            images:['6. AI Agent for Facebook (n8n 1).png'],
+            Overview:'Developed an AI-powered Facebook customer support agent that processes incoming messages and generates automated responses using AI models and connected information sources.',
+            Problem/Solution:'Businesses spend significant time answering repetitive customer questions and manually searching for information. This workflow solves the problem by creating an AI assistant that understands customer inquiries, retrieves relevant information, and provides automated responses.',
+            'How It Work':'The system receives Facebook messages through API connections, processes requests using n8n, retrieves relevant information from connected documents, sends context to Google Gemini AI, and generates responses through automated API workflows.',
+            Tools:['n8n','Facebook Graph API','Google Gemini','AI Agent','Webhooks','Document Retrieval']
+        },
+
+        {
+            title:'AI Jobs Scraper + Resume Optimizer',
+            images:['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'],
+            Overview:'Created an AI-powered job search assistant that automates job discovery, requirement analysis, and resume customization.',
+            Problem/Solution:'Job seekers spend significant time searching for opportunities and manually adjusting applications. This workflow solves the problem by automating job discovery, analyzing requirements, and generating customized resume content.',
+            'How It Works':'The workflow collects job listings through APIs, filters opportunities based on requirements, analyzes job descriptions using AI models, generates optimized resume content through OpenRouter AI, and stores outputs through Google Drive.',
+            Tools:['n8n','Job APIs','OpenRouter AI','Google Drive','AI Models','Slack']
+        },
+
+        {
+            title:'AI Content Generator / ASMR Video Automation',
+            images:['8. ASMR Remake (n8n 3).png'],
+            Overview:'Developed an AI-powered content creation pipeline that automates idea generation, prompt creation, and video workflow processing for social media content.',
+            Problem/Solution:'Creating consistent video content requires repetitive planning, scripting, and production tasks. This workflow solves the problem by automating content preparation, AI processing, and content organization.',
+            'How It Works':'The workflow generates content ideas using AI, creates prompts for video generation, processes generated files, organizes outputs through connected platforms, and prepares content for publishing workflows.',
+            Tools:['n8n','Google Gemini AI','Video APIs','Facebook Graph API','Google Sheets']
+        },
+
+        {
+            title:'AI Receptionist & Appointment Booking System',
+            images:['9. AI Receptionist (n8n 4).png'],
+            Overview:'Built an AI-powered receptionist system that automates customer conversations, appointment scheduling, and calendar management using voice AI and workflow automation.',
+            Problem/Solution:'Businesses often lose potential customers when inquiries and appointment requests require manual responses or delayed scheduling. This workflow solves the problem by creating an AI receptionist that automatically handles requests, checks availability, and manages appointments.',
+            'How It Works':'The workflow receives customer requests through Vapi AI, processes conversations using n8n, checks schedules through Google Calendar API, creates or updates appointments, stores booking information in Airtable, and sends automated responses through webhook integrations.',
+            Tools:['n8n','Vapi AI','Google Calendar API','Airtable','Webhooks','JavaScript','AI Models']
+        },
+
+        {
+            title:'RAG AI Knowledge Base Assistant',
+            images:['10. RAG Agent (n8n 5).png'],
+            Overview:'Built a Retrieval-Augmented Generation (RAG) AI assistant that provides context-based answers using uploaded documents and stored knowledge.',
+            Problem/Solution:'Businesses often spend time searching through internal documents to find accurate information. This workflow solves the problem by creating an AI knowledge assistant that retrieves relevant information and generates accurate responses.',
+            'How It Works':'The workflow processes uploaded documents, creates embeddings using AI models, stores information inside a vector database, retrieves relevant content through semantic search, and generates context-aware responses.',
+            Tools:['n8n','Supabase Vector Store','Google Vertex AI Embeddings','Google Gemini','RAG Architecture','AI Models']
+        }
+
+        {
+            title:'Automated E-Certificate Generator',
+            images:['11. Automated E-Certificate Generator (n8n 6).png'],
+            Overview:'Built an automated certificate generation workflow that creates personalized certificates from participant information and streamlines document processing.',
+            Problem/Solution:'Organizations spend significant time manually creating certificates for events, training programs, and large groups of participants. This workflow solves the problem by automating certificate generation, file processing, and document organization.',
+            How It Works:'The workflow reads participant data from Google Sheets, transfers information into certificate templates using Google Slides, generates personalized certificates, converts files into final formats, and stores completed outputs in Google Drive.',
+            Tools:['n8n','Google Sheets','Google Slides','Google Drive','PDF Processing']
+        },
+            ]
+        },
                     {
                         platform:'HighLevel',
                         logo:'ghl1-logo.png',
