@@ -1097,7 +1097,7 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
                 <template x-for="(group,i) in automationGroups" :key="group.platform">
                     <div class="stack-card" :class="carouselPosition(i, automationIndex)" :style="i===automationIndex ? 'pointer-events:auto;cursor:pointer;' : 'pointer-events:none;'" @click="i===automationIndex && openAutomationGallery(group)">
                         <div class="stack-card-inner p-8 flex flex-col items-center justify-center text-center">
-                            <img :src="group.logo" class="w-50 h-50 object-contain mb-5">
+                            <img :src="group.logo" class="w-35 h-35 object-contain mb-5">
                             <h3 class="text-3xl font-extrabold dark:text-white text-slate-900 stack-text" x-text="group.platform"></h3>
                             <p class="text-slate-500 mt-3" x-text="group.description"></p>
                             <span class="mt-5 text-pink-500 font-bold text-sm" x-text="group.projects.length + ' automation systems'"></span>
