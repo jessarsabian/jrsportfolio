@@ -711,6 +711,75 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
 /* Automation header alignment */
 #works > div > div.text-center { text-align:center; }
 </style>
+
+<style>
+/* FINAL UI PATCH - preserve dark mode and refine light mode */
+
+html, body, .theme-bg, section, .glass,
+.stack-card-inner, .certificate-card-inner,
+nav, button, p, h1, h2, h3, h4 {
+    transition: background-color .45s ease, border-color .45s ease,
+    color .45s ease, box-shadow .45s ease;
+}
+
+#works .stack-card-inner img {
+    width: 10rem !important;
+    height: 10rem !important;
+    margin-bottom: 1.25rem;
+}
+
+#works .stack-card-inner {
+    height: 360px !important;
+}
+
+#certificates .certificate-card-inner {
+    min-height: 360px !important;
+    height: 360px !important;
+}
+
+#certificates .certificate-image-frame {
+    height: 180px !important;
+}
+
+#certificates .certificate-card {
+    width: min(390px,78vw) !important;
+}
+
+.light section,
+.light .theme-bg {
+    background: transparent !important;
+}
+
+.light .certificate-card-inner,
+.light .stack-card-inner {
+    border-color: rgba(0,0,0,.06) !important;
+}
+
+.automation-detail-modal,
+.premium-glass-modal,
+.certificate-modal-panel {
+    animation: modalPop .35s ease;
+}
+
+@keyframes modalPop {
+    from {opacity:0; transform:scale(.96) translateY(20px);}
+    to {opacity:1; transform:scale(1) translateY(0);}
+}
+
+.fullscreen-image-transition {
+    animation: fullscreenZoom .35s ease;
+}
+
+@keyframes fullscreenZoom {
+    from {opacity:0; transform:scale(.92);}
+    to {opacity:1; transform:scale(1);}
+}
+
+#works .stack-card,
+#certificates .certificate-card {
+    will-change: transform, opacity;
+}
+</style>
 </head>
 
 <body class="theme-bg text-slate-800 dark:text-slate-200 antialiased overflow-x-hidden" :class="darkMode ? 'dark' : 'light'">
@@ -1315,7 +1384,7 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
 
 
     <img :src="fullscreenImage"
-         class="max-w-full max-h-full object-contain rounded-2xl">
+         class="max-w-full max-h-full object-contain rounded-2xl fullscreen-image-transition">
 
 </div>
     
@@ -1390,6 +1459,12 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
     <!-- CERTIFICATE FULLSCREEN -->
     <div x-show="certificateFullscreenOpen"
          x-cloak
+         x-transition:enter="transition ease-out duration-400"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
          class="fixed inset-0 z-[250] bg-black/95 backdrop-blur-xl flex items-center justify-center p-6">
 
         <button @click="certificateFullscreenOpen=false"
@@ -1398,7 +1473,7 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
         </button>
 
         <img :src="fullscreenImage"
-             class="max-w-full max-h-full object-contain rounded-2xl">
+             class="max-w-full max-h-full object-contain rounded-2xl fullscreen-image-transition">
     </div>
 
     <!-- FAQ -->
