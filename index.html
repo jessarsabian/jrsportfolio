@@ -1143,7 +1143,7 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
         </div>
         <div class="automation-detail-modal rounded-[2rem] p-8 text-white">
           <button @click="closeProjectViewer()" class="float-right text-3xl text-white/80">×</button>
-          <div class="text-pink-400 uppercase tracking-widest text-sm font-bold mb-5" x-text="selectedProject?.category || 'N8N TOOLSET'"></div>
+          <div class="text-pink-400 uppercase tracking-widest text-sm font-bold mb-5" x-text="selectedProject?.category || 'AI AUTOMATIO SYSTEMS'"></div>
           <h2 class="automation-detail-title mb-8" x-text="selectedProject?.title"></h2>
           <h4 class="text-pink-400 uppercase tracking-widest font-bold">Problem</h4>
           <p class="automation-detail-text mb-6" x-text="selectedProject?.problem"></p>
@@ -1678,21 +1678,22 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
                     {
                         platform:'n8n',
                         logo:'n8n1-logo.png',
-                        description:'AI workflow automation platform for intelligent business systems.',
+                        description:'AI-powered workflows and intelligent automation systems.',
                         projects:[
-                            {title:'AI Agent for Facebook', images:['6. AI Agent for Facebook (n8n 1).png'], summary:'AI customer support and response automation.', problem:'Manual Facebook responses create delays and inconsistent customer handling.', how:'n8n connects Facebook messages with AI models and memory workflows.', solution:'Automated AI-powered customer communication system.', tools:['n8n','Facebook Graph API','Google Gemini']},
-                            {title:'AI Jobs Scraper + Resume Optimizer', images:['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'], summary:'AI job search and resume optimization workflow.', problem:'Searching and customizing applications manually consumes time.', how:'The workflow collects jobs, analyzes requirements, and generates optimized resumes.', solution:'Automated job discovery and application preparation system.', tools:['n8n','RapidAPI','OpenRouter','Google Docs']},
-                            {title:'ASMR Remake', images:['8. ASMR Remake (n8n 3).png'], summary:'AI content creation pipeline.', problem:'Content production requires repetitive manual steps.', how:'AI generates scripts, assets, and publishing workflows.', solution:'Automated short-form content production.', tools:['n8n','Google Gemini AI','YouTube API']},
-                            {title:'AI Receptionist', images:['9. AI Receptionist (n8n 4).png'], summary:'Voice AI appointment automation.', problem:'Manual appointment scheduling causes missed opportunities.', how:'Voice AI handles calls, calendars, and customer requests.', solution:'Automated booking assistant.', tools:['n8n','Vapi AI','Google Calendar','Airtable']},
-                            {title:'RAG Agent', images:['10. RAG Agent (n8n 5).png'], summary:'Document intelligence AI workflow.', problem:'Finding internal information manually is inefficient.', how:'Documents are processed through retrieval augmented generation.', solution:'AI knowledge assistant using company data.', tools:['n8n','Supabase','Google Gemini AI']}
+                            {title:'AI Agent for Facebook',images:['6. AI Agent for Facebook (n8n 1).png'],summary:'AI-powered Facebook customer support agent.',problem:'Businesses spend significant time answering repetitive customer questions and manually searching for information.',how:'The workflow receives Facebook messages through API connections, processes requests using n8n, retrieves relevant information from connected documents, and uses AI models to generate responses.',solution:'Created an AI assistant that improves customer support response time and automates repetitive inquiries.',tools:['n8n','Facebook Graph API','Google Gemini','AI Agent','Webhooks','Document Retrieval']},
+                            {title:'AI Jobs Scraper + Resume Optimizer',images:['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'],summary:'AI-powered job searching and resume optimization workflow.',problem:'Job seekers spend hours manually searching opportunities and customizing applications.',how:'The workflow collects job listings, analyzes requirements, generates optimized resume content, and organizes application information.',solution:'Automated job discovery and application preparation system.',tools:['n8n','RapidAPI','OpenRouter AI','Google Drive','AI Models']},
+                            {title:'ASMR Remake / AI Content Generator',images:['8. ASMR Remake (n8n 3).png'],summary:'AI content creation pipeline.',problem:'Creating consistent social media content requires repetitive planning and production tasks.',how:'AI generates content ideas, creates prompts, processes assets, and prepares files for publishing workflows.',solution:'Automated short-form content production system.',tools:['n8n','Google Gemini AI','Video APIs','Facebook Graph API','Google Sheets']},
+                            {title:'AI Receptionist & Appointment Booking System',images:['9. AI Receptionist (n8n 4).png'],summary:'AI voice receptionist and scheduling automation.',problem:'Manual appointment handling can cause delayed responses and missed opportunities.',how:'Voice AI receives requests, checks calendar availability, creates appointments, and stores customer information through connected workflows.',solution:'Automated appointment assistant that improves customer response and scheduling efficiency.',tools:['n8n','Vapi AI','Google Calendar API','Airtable','Webhooks','JavaScript']},
+                            {title:'RAG AI Knowledge Base Assistant',images:['10. RAG Agent (n8n 5).png'],summary:'AI document retrieval knowledge assistant.',problem:'Businesses spend time searching internal documents for answers and information.',how:'Documents are processed, converted into embeddings, stored in a vector database, and retrieved when users ask questions.',solution:'AI-powered knowledge system that provides context-based answers from company data.',tools:['n8n','Supabase Vector Store','Google Vertex AI Embeddings','Google Gemini AI','RAG Architecture']},
+                            {title:'Automated E-Certificate Generator',images:['11. E-cert Generator (n8n 6).png'],summary:'Automated certificate generation workflow.',problem:'Creating large numbers of certificates manually is time-consuming and prone to errors.',how:'The workflow reads participant data from Google Sheets, generates certificates using templates, converts files, and stores outputs automatically.',solution:'Automated document generation system that reduces manual administrative work.',tools:['n8n','Google Sheets','Google Slides','Google Drive','PDF Processing']}
                         ]
                     },
                     {
                         platform:'HighLevel',
                         logo:'ghl1-logo.png',
-                        description:'CRM, pipeline, and lead follow-up automation.',
+                        description:'CRM and lead management automation systems.',
                         projects:[
-                            {title:'Lead Capture with Instant Follow-ups', images:['Lead Capture with Instant Follow-ups_sent 1.png','Lead Capture with Instant Follow-ups_sent 2.png','Lead Capture with Instant Follow-ups_sent 3.png','Lead Capture with Instant Follow-ups_not interested.png'], summary:'Complete lead capture and automated follow-up system.', problem:'Leads can be lost without immediate response.', how:'Forms, CRM pipelines, workflows, and follow-ups are connected.', solution:'Automated lead nurturing system.', tools:['HighLevel','CRM','Funnels','Workflow Automation','AI Agents']}
+                            {title:'Lead Capture with Instant Follow-Ups',images:['Lead Capture with Instant Follow-ups_sent 1.png','Lead Capture with Instant Follow-ups_sent 2.png'],summary:'GoHighLevel CRM lead nurturing system.',problem:'Businesses lose potential customers when leads are not contacted quickly or follow-ups are handled manually.',how:'The system captures leads through forms, applies tags, sends automated SMS follow-ups, tracks responses, and manages customer workflow stages.',solution:'Automated lead nurturing system that improves response time and customer engagement.',tools:['GoHighLevel CRM','Workflow Builder','Forms','SMS Automation','Contact Management','Tags','Pipelines']}
                         ]
                     },
                     {
@@ -1700,9 +1701,9 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
                         logo:'zapier1-logo.png',
                         description:'No-code automation workflows.',
                         projects:[
-                            {title:'AI Content Repurposing',images:['1. AI Content Repurposing (Zapier 1).png'],summary:'Transforms content into multiple assets.',problem:'Manual repurposing slows publishing.',how:'Zapier connects AI tools with publishing workflows.',solution:'Automated content distribution.',tools:['Zapier','OpenRouter','Social APIs']},
-                            {title:'Asana CRM Lead Engagement Workflow',images:['2. Asana CRM Lead Engagement Workflow (Zapier 2).png'],summary:'CRM task and engagement automation.',problem:'Sales follow-ups require manual tracking.',how:'Leads trigger Asana tasks and communication flows.',solution:'Structured sales workflow.',tools:['Zapier','Asana','Gmail']},
-                            {title:'Automated Lead Enrichment',images:['3. Automated Lead Enrichment (Zapier 3).png'],summary:'Automated prospect enrichment.',problem:'Incomplete lead data affects sales.',how:'Lead information is enriched and routed automatically.',solution:'Better qualified leads.',tools:['Zapier','Apollo','Slack']}
+                            {title:'AI Content Repurposing',images:['1. AI Content Repurposing (Zapier 1).png'],summary:'AI content transformation workflow.',problem:'Content teams spend time manually rewriting and preparing content for different platforms.',how:'Zapier connects AI tools with content sources and publishing workflows.',solution:'Automated content transformation and distribution workflow.',tools:['Zapier','AI by Zapier','Google Drive','Facebook Pages','LinkedIn']},
+                            {title:'Asana CRM Lead Engagement Workflow',images:['2. Asana CRM Lead Engagement Workflow (Zapier 2).png'],summary:'Lead management and follow-up automation.',problem:'Sales teams need better tracking of leads and customer activities.',how:'Lead information triggers automated tasks, updates records, and organizes follow-up processes.',solution:'Structured CRM workflow for better lead management.',tools:['Zapier','Asana','Google Sheets','Gmail']},
+                            {title:'Automated Lead Enrichment',images:['3. Automated Lead Enrichment (Zapier 3).png'],summary:'Prospect data enrichment workflow.',problem:'Manual prospect research takes time and slows down outreach.',how:'Lead data is enriched through external services and organized automatically.',solution:'Improved lead quality and faster sales preparation.',tools:['Zapier','Apollo API','Google Sheets','Slack','Webhooks']}
                         ]
                     },
                     {
@@ -1710,12 +1711,11 @@ box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
                         logo:'make1-logo.png',
                         description:'Visual automation scenarios.',
                         projects:[
-                            {title:'Xero Transactions Asana',images:['4. Xero Transactions Asana (Make.com 1).png'],summary:'Accounting workflow automation.',problem:'Financial data transfer is repetitive.',how:'Make connects Xero transactions with Asana workflows.',solution:'Automated financial task management.',tools:['Make.com','Xero','Asana']},
-                            {title:'Auto Sort Gmail Attachments on Drive',images:['5. Auto Sort Gmail Attachments on Drive (Make.com 2).png'],summary:'Smart document organization.',problem:'Manual file sorting wastes time.',how:'Attachments are detected, renamed, and stored automatically.',solution:'Organized document workflow.',tools:['Make.com','Gmail','Google Drive']}
+                            {title:'Xero Transactions Asana',images:['4. Xero Transactions Asana (Make.com 1).png'],summary:'Accounting task automation.',problem:'Teams manually transfer financial information into project systems.',how:'Make retrieves Xero transaction data, creates tasks, and records information automatically.',solution:'Automated financial workflow management.',tools:['Make','Xero API','Asana','Google Sheets']},
+                            {title:'Gmail Attachment Automation',images:['5. Auto Sort Gmail Attachments on Drive (Make.com 2).png'],summary:'Email document automation workflow.',problem:'Manual file downloading and organization wastes administrative time.',how:'The workflow detects attachments, processes files, stores them in Google Drive, and logs activity.',solution:'Automated document management workflow.',tools:['Make','Gmail','Google Drive','Google Sheets','AI Processing']}
                         ]
                     }
                 ],
-
 
                 init() {
                 this.darkMode = localStorage.getItem('darkMode') === 'true';
