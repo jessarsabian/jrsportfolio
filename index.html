@@ -476,6 +476,240 @@ section {
 .sparkle-text { animation:sparkle 3s ease-in-out infinite; }
 @keyframes sparkle { 50% { text-shadow:0 0 18px rgba(236,72,153,.35); } }
 .qr-hover:hover { filter:drop-shadow(0 0 14px rgba(236,72,153,.35)); }
+
+/* AUTOMATION + CERTIFICATE PREMIUM CAROUSEL */
+.stack-carousel{position:relative;height:460px;overflow:hidden;perspective:1200px}
+.stack-card{position:absolute;left:50%;top:50%;width:min(520px,78vw);transform:translate(-50%,-50%);transition:transform 700ms cubic-bezier(.22,1,.36,1),opacity 450ms ease;cursor:pointer}
+.stack-card-inner{height:360px;border-radius:2rem;background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);box-shadow:0 25px 60px rgba(0,0,0,.18);overflow:hidden}
+.stack-prev{transform:translate(calc(-50% - 300px),-50%) scale(.78);opacity:.45;z-index:1}
+.stack-active{transform:translate(-50%,-50%) scale(1);opacity:1;z-index:3}
+.stack-next{transform:translate(calc(-50% + 300px),-50%) scale(.78);opacity:.45;z-index:1}
+.stack-hidden{transform:translate(-50%,-50%) scale(.65);opacity:0;z-index:0}
+.stack-card img{object-fit:contain}.stack-nav svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.stack-nav{position:absolute;top:50%;transform:translateY(-50%);width:64px;height:64px;border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.25);color:#ec4899;z-index:10;display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(0,0,0,.25),inset 0 1px 12px rgba(255,255,255,.25);animation:arrowBounce 1.5s infinite ease-in-out;transition:.3s ease}
+.stack-nav:hover{transform:translateY(-50%) scale(1.1);filter:drop-shadow(0 0 15px rgba(236,72,153,.5))}
+.stack-nav:active{transform:translateY(-50%) scale(.95)}
+.stack-nav svg{width:32px;height:32px}
+@keyframes arrowBounce{50%{translate:0 6px}}
+.stack-nav.left{left:20px}.stack-nav.right{right:20px}
+.stack-text{animation:stackText .45s ease}
+@keyframes stackText{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.premium-glass-modal{background:rgba(255,255,255,.08)!important;backdrop-filter:blur(20px)!important;border:1px solid rgba(255,255,255,.15)!important}
+@media(max-width:768px){
+.stack-carousel{height:390px}.stack-prev{transform:translate(calc(-50% - 210px),-50%) scale(.75)}.stack-next{transform:translate(calc(-50% + 210px),-50%) scale(.75)}
+}
+
+
+
+
+/* Dedicated Certificate Carousel - separated from Automation Carousel */
+.certificate-carousel{
+    position:relative;
+    height:620px;
+    overflow:hidden;
+    perspective:1200px;
+}
+
+.certificate-card{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:min(520px,82vw);
+    transform:translate(-50%,-50%);
+    transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .45s ease;
+}
+
+.certificate-card-inner{
+    min-height:520px;
+    border-radius:2rem;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+    overflow:hidden;
+}
+
+.certificate-active{
+    transform:translate(-50%,-50%) scale(1);
+    opacity:1;
+    z-index:3;
+}
+
+.certificate-prev{
+    transform:translate(calc(-50% - 340px),-50%) scale(.78);
+    opacity:.45;
+    z-index:1;
+}
+
+.certificate-next{
+    transform:translate(calc(-50% + 340px),-50%) scale(.78);
+    opacity:.45;
+    z-index:1;
+}
+
+.certificate-hidden{
+    transform:translate(-50%,-50%) scale(.65);
+    opacity:0;
+    z-index:0;
+}
+
+.certificate-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:64px;
+    height:64px;
+    border-radius:999px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.25);
+    color:#ec4899;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.certificate-nav.left{left:20px}
+.certificate-nav.right{right:20px}
+
+.certificate-nav svg{
+    width:32px;
+    height:32px;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:2;
+}
+
+@media(max-width:768px){
+    .certificate-carousel{height:560px}
+    .certificate-prev{
+        transform:translate(calc(-50% - 220px),-50%) scale(.75)
+    }
+    .certificate-next{
+        transform:translate(calc(-50% + 220px),-50%) scale(.75)
+    }
+}
+
+/* Certificate viewer refinement */
+.certificate-card-inner{
+    min-height:620px;
+    height:auto!important;
+    overflow:hidden;
+}
+.certificate-image-frame{
+    position:relative;
+    height:280px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:24px;
+    padding:16px;
+}
+.certificate-image-frame img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+.certificate-fullscreen-btn{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.25);
+    color:white;
+}
+.certificate-modal-panel{
+    background:rgba(10,10,15,.88);
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+/* FINAL POLISH OVERRIDES */
+.light .theme-bg,.dark .theme-bg{background-color:transparent;}
+section{background:transparent !important;}
+.certificate-carousel{height:520px;}
+.certificate-card{width:min(420px,78vw);cursor:default;}
+.certificate-card-inner{min-height:420px;height:auto;padding:1.5rem;}
+.certificate-image-frame{height:220px;padding:12px;position:relative;}
+.certificate-image-frame img{object-fit:contain !important;}
+.certificate-fullscreen-btn{top:12px;right:12px;z-index:5;}
+.certificate-card:not(.certificate-active){pointer-events:none !important;}
+.certificate-active{pointer-events:auto !important;}
+.certificate-nav{
+width:64px;height:64px;background:rgba(255,255,255,.10);
+backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.20);
+box-shadow:0 15px 40px rgba(0,0,0,.25);transition:.3s ease;
+}
+.light .certificate-nav{background:rgba(255,255,255,.65);border-color:rgba(0,0,0,.08);}
+.certificate-nav:hover{transform:translateY(-50%) scale(1.08);}
+.certificate-nav:active{transform:translateY(-50%) scale(.95);}
+@media(max-width:768px){
+.certificate-carousel{height:480px}
+.certificate-card{width:min(340px,85vw)}
+.certificate-image-frame{height:180px}
+}
+</style>
+
+<style>
+.automation-detail-modal{background:rgba(10,10,15,.88);backdrop-filter:blur(25px);border:1px solid rgba(255,255,255,.15);box-shadow:0 25px 80px rgba(0,0,0,.45)}
+.automation-image-frame{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.22);border-radius:32px;padding:12px}
+.automation-detail-title{color:#fff;font-size:clamp(2rem,3vw,3rem);font-weight:800;line-height:1.05}
+.automation-detail-text{color:rgba(255,255,255,.78);line-height:1.7}
+.automation-tool-tag{background:rgba(236,72,153,.15);border:1px solid rgba(236,72,153,.35);color:#fbcfe8}
+.automation-full-btn{background:rgba(0,0,0,.55);color:#fff;border-radius:999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+
+/* FINAL THEME PATCH: restore dark mode, refine light mode only */
+.dark body, .dark {
+    background-color: #020617 !important;
+}
+
+/* Keep dark mode glass appearance */
+.dark .stack-card-inner,
+.dark .certificate-card-inner {
+    background: rgba(15,23,42,0.55) !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #f8fafc;
+}
+
+/* Light mode seamless sections only */
+:not(.dark) section {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+:not(.dark) .stack-card-inner,
+:not(.dark) .certificate-card-inner {
+    background: rgba(255,255,255,0.72) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+    box-shadow: 0 20px 55px rgba(15,23,42,0.08) !important;
+}
+
+/* Compact certificate cards */
+.certificate-card {
+    width: min(460px, 78vw) !important;
+}
+
+.certificate-card-inner {
+    min-height: 470px !important;
+    height: auto !important;
+    padding: 1.25rem !important;
+}
+
+.certificate-image-frame {
+    height: 230px !important;
+}
+</style>
+
+
+<style>
+/* Automation header alignment */
+#works > div > div.text-center { text-align:center; }
 </style>
 </head>
 
@@ -563,13 +797,13 @@ section {
     </section>
 
     <!-- About Me -->
-    <section id="about" class="py-28 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="about" class="py-28 px-6">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.6fr_1fr] gap-12 items-start">
             <div data-aos="fade-right">
                 <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mb-8">About Me</h2>
                 <div class="space-y-5 text-slate-500 dark:text-slate-400 text-base md:text-[17px] leading-relaxed max-w-3xl">
-                    <p>I’m Jessa — an AI Automation Specialist and Operations Support professional helping businesses reduce repetitive work using n8n, Zapier, Make.com, AI tools, and CRM workflows.</p>
-                    <p>My background in data entry, Google Ads operations, campaign setup, tracking workflows, and backend support helps me understand real operational bottlenecks — not just automate for the sake of automation.</p>
+                    <p>I’m Jessa — an AI Automation Specialist and Operations Support professional helping businesses reduce repetitive work using n8n, HighLevel, Zapier, Make.com, AI tools, and CRM workflows.</p>
+                    <p>My background in operations support, data management, workflow coordination, and backend systems helps me understand real business bottlenecks — not just automate for the sake of automation.</p>
                 </div>
                 <div class="mt-8 border-l-2 border-pink-500 pl-6">
                     <p class="text-lg md:text-xl font-extrabold dark:text-white text-slate-900">“If your team is losing time on repetitive tasks, I’ll help turn that process into a smarter system.”</p>
@@ -643,7 +877,7 @@ section {
     </section>
 
     <!-- Process -->
-    <section id="process" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="process" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 text-center mb-20" data-aos="fade-up">A Process Built for Results — Not Surprises.</h2>
             <div class="grid md:grid-cols-4 gap-10 relative">
@@ -657,7 +891,7 @@ section {
     </section>
 
     <!-- Tools -->
-   <section id="tools" class="py-16 px-6 bg-slate-50/50 dark:bg-black/10">
+   <section id="tools" class="py-16 px-6">
 
     <div class="max-w-7xl mx-auto text-center">
 
@@ -680,7 +914,8 @@ section {
 
                 <!-- ===================== -->
                 <!-- SET 1 START HERE -->
-                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>  
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="ghl-logo.png" alt="" class="w-5 h-5 object-contain"> HighLevel</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
@@ -714,7 +949,8 @@ section {
 
                 <!-- ===================== -->
                 <!-- DUPLICATE SET 1 HERE -->
-                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>  
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="ghl-logo.png" alt="" class="w-5 h-5 object-contain"> HighLevel</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
@@ -758,6 +994,7 @@ section {
                 <!-- ===================== -->
                 <!-- SET 2 START HERE -->
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="ghl-logo.png" alt="" class="w-5 h-5 object-contain"> HighLevel</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
@@ -792,6 +1029,7 @@ section {
                 <!-- ===================== -->
                 <!-- DUPLICATE SET 2 HERE -->
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="n8n-logo.png" alt="" class="w-5 h-5 object-contain"> n8n</div>   
+                <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="ghl-logo.png" alt="" class="w-5 h-5 object-contain"> HighLevel</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="zapier-logo.png" alt="" class="w-5 h-5 object-contain"> Zapier</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="make-logo.png" alt="" class="w-5 h-5 object-contain"> Make.com</div>
                 <div class="px-6 py-4 bg-white/80 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold flex items-center gap-3 shadow-sm"><img src="chatgpt-logo.png" alt="" class="w-5 h-5 object-contain"> ChatGPT</div>
@@ -838,7 +1076,7 @@ section {
                 <div data-aos="fade-left">
                     <span class="text-pink-500 font-bold text-xs uppercase tracking-widest">Feb 2025 – Oct 2025</span>
                     <h3 class="text-2xl font-bold dark:text-white mt-2">Virtual Assistant — Upwork</h3>
-                    <p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Supported Google Ads and backend operations for iGaming campaigns, including tracking workflows, website verification, deployment support, and campaign launch coordination.</p>
+                    <p class="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">Supported HighLevel CRM & Automation and backend operations for iGaming campaigns, including tracking workflows, website verification, deployment support, and campaign launch coordination.</p>
                 </div>
                 <div data-aos="fade-left" data-aos-delay="100">
                     <span class="text-pink-500 font-bold text-xs uppercase tracking-widest">Oct 2021 – March 2025</span>
@@ -850,30 +1088,80 @@ section {
     </section>
 
     <!-- Works Section -->
-    <section id="works" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="works" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6">Automation Systems</h2>
-            <p class="max-w-2xl text-slate-500 dark:text-slate-400 mb-20">
-                A collection of AI-powered workflows, no-code automations, and operational systems built to reduce manual work and improve execution.
-            </p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <template x-for="(project, index) in projects" :key="index">
-                    <div data-aos="zoom-in" @click="openModal(project)" class="glass p-4 rounded-[2.5rem] group cursor-pointer border-transparent hover:border-pink-500/50 transition-all duration-500 active:scale-95">
-                        <div class="relative overflow-hidden rounded-[1.8rem] aspect-video mb-6 bg-slate-200 dark:bg-slate-900">
-                            <img :src="project.images[0]" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
-                        </div>
-                        <div class="px-4 py-4 rounded-[1.5rem] bg-white/70 dark:bg-black/35 backdrop-blur-xl border border-white/10">
-                            <span class="inline-block px-3 py-1 rounded-full bg-pink-500/15 border border-pink-500/20 text-[10px] font-bold text-pink-500 uppercase tracking-widest" x-text="project.tool"></span>
-                            <h3 class="text-xl font-bold dark:text-white text-slate-900 mt-3" x-text="project.title"></h3>
+            <div class="text-center">
+                <h2 data-aos="fade-up" data-aos-duration="800" class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6">Automation Systems</h2>
+                <p data-aos="fade-up" data-aos-delay="120" data-aos-duration="800" class="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 mb-10">AI workflows, no-code systems, and automation platforms designed to reduce repetitive work.</p>
+            </div>
+
+            <!-- AUTOMATION CAROUSEL START -->
+            <div data-aos="fade-up" data-aos-duration="900" class="stack-carousel" @keydown.window.arrow-left="prevAutomation()" @keydown.window.arrow-right="nextAutomation()" tabindex="0">
+                <button class="stack-nav left" @click="prevAutomation()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+                <template x-for="(group,i) in automationGroups" :key="group.platform">
+                    <div class="stack-card" :class="carouselPosition(i, automationIndex)" :style="i===automationIndex ? 'pointer-events:auto;cursor:pointer;' : 'pointer-events:none;'" @click="i===automationIndex && openAutomationGallery(group)">
+                        <div class="stack-card-inner p-8 flex flex-col items-center justify-center text-center">
+                            <img :src="group.logo" class="w-20 h-20 object-contain mb-5">
+                            <h3 class="text-3xl font-extrabold dark:text-white text-slate-900 stack-text" x-text="group.platform"></h3>
+                            <p class="text-slate-500 mt-3" x-text="group.description"></p>
+                            <span class="mt-5 text-pink-500 font-bold text-sm" x-text="group.projects.length + ' automation systems'"></span>
                         </div>
                     </div>
                 </template>
+                <button class="stack-nav right" @click="nextAutomation()"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
             </div>
+            <!-- AUTOMATION CAROUSEL END -->
         </div>
     </section>
 
+    <!-- Automation Gallery -->
+    <div x-show="automationGalleryOpen" x-cloak class="fixed inset-0 z-[150] flex items-center justify-center p-6 bg-black/30 backdrop-blur-sm">
+      <div class="premium-glass-modal rounded-[2rem] p-8 max-w-6xl w-full">
+        <button @click="closePlatformGallery()" class="float-right text-3xl">×</button>
+        <h2 class="text-3xl font-bold dark:text-white mb-8" x-text="selectedPlatform?.platform"></h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <template x-for="project in selectedPlatform?.projects || []" :key="project.title">
+            <div class="glass rounded-2xl p-4 cursor-pointer hover:scale-105 transition" @click="openAutomationProject(project)">
+              <img :src="project.images[0]" class="rounded-xl h-40 w-full object-cover">
+              <h3 class="font-bold dark:text-white mt-4" x-text="project.title"></h3>
+              <p class="text-sm text-slate-400" x-text="project.summary"></p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
 
-      <!-- Project Modal -->
+    <!-- Automation Detail -->
+    <div x-show="automationProjectOpen" x-cloak class="fixed inset-0 z-[160] flex items-center justify-center p-6 bg-black/75 backdrop-blur-xl">
+      <div class="automation-detail-modal rounded-[2rem] p-8 max-w-7xl w-full grid lg:grid-cols-2 gap-10">
+        <div class="flex flex-col justify-center">
+          <div class="automation-image-frame relative">
+            <img :src="selectedProject?.images[projectImageIndex]" class="rounded-[1.5rem] object-contain w-full max-h-[65vh]">
+            <button @click="openFullscreen(selectedProject.images[projectImageIndex])" class="automation-full-btn absolute top-5 right-5"><i class="fas fa-expand"></i></button>
+          </div>
+          <div class="flex justify-center items-center gap-4 mt-5">
+            <button @click="projectImageIndex=(projectImageIndex-1+selectedProject.images.length)%selectedProject.images.length" class="stack-nav !static !translate-y-0 w-12 h-12"><i class="fas fa-chevron-left"></i></button>
+            <span class="text-white text-sm" x-text="(projectImageIndex+1)+' / '+selectedProject.images.length"></span>
+            <button @click="projectImageIndex=(projectImageIndex+1)%selectedProject.images.length" class="stack-nav !static !translate-y-0 w-12 h-12"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="automation-detail-modal rounded-[2rem] p-8 text-white">
+          <button @click="closeProjectViewer()" class="float-right text-3xl text-white/80">×</button>
+          <div class="text-pink-400 uppercase tracking-widest text-sm font-bold mb-5" x-text="selectedProject?.category || 'N8N TOOLSET'"></div>
+          <h2 class="automation-detail-title mb-8" x-text="selectedProject?.title"></h2>
+          <h4 class="text-pink-400 uppercase tracking-widest font-bold">Problem</h4>
+          <p class="automation-detail-text mb-6" x-text="selectedProject?.problem"></p>
+          <h4 class="text-pink-400 uppercase tracking-widest font-bold">How It Works</h4>
+          <p class="automation-detail-text mb-6" x-text="selectedProject?.how || selectedProject?.howItWorks"></p>
+          <h4 class="text-pink-400 uppercase tracking-widest font-bold">Solution</h4>
+          <p class="automation-detail-text mb-6" x-text="selectedProject?.solution"></p>
+          <h4 class="text-pink-400 uppercase tracking-widest font-bold">Tools Used</h4>
+          <div class="flex flex-wrap gap-3 mt-4"><template x-for="t in selectedProject?.tools||[]"><span class="automation-tool-tag px-4 py-2 rounded-full text-sm" x-text="t"></span></template></div>
+        </div>
+      </div>
+    </div>
+
+<!-- Project Modal -->
     <div x-show="modalOpen"
          x-cloak
          x-transition:enter="transition ease-out duration-500"
@@ -1022,7 +1310,7 @@ section {
 
 
     <button 
-        @click="fullscreenOpen = false; modalOpen = true"
+        @click="closeFullscreenViewer()"
         class="absolute top-6 right-6 text-white text-5xl hover:text-pink-500 transition">
 
         <i class="fas fa-times-circle"></i>
@@ -1036,7 +1324,7 @@ section {
 </div>
     
     <!-- CTA After Projects -->
-    <section id="project-cta" class="py-20 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="project-cta" class="py-20 px-6">
         <div class="max-w-6xl mx-auto glass rounded-[2rem] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left" data-aos="zoom-in" data-aos-duration="900" data-aos-easing="ease-out-back">
             <div data-aos="fade-right" data-aos-delay="150">
                 <h2 class="text-3xl md:text-4xl font-extrabold dark:text-white text-slate-900 mb-3">
@@ -1056,58 +1344,69 @@ section {
 
     <!-- Certifications -->
     <section id="certificates" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-extrabold dark:text-white text-slate-900 mb-6 text-center">Certificates</h2>
-            <p class="max-w-2xl mx-auto text-center text-slate-500 dark:text-slate-400 mb-16">
-                Training foundations supporting no-code automation, AI workflows, and prompt-based systems.
-            </p>
+      <div class="max-w-7xl mx-auto">
+        <h2 data-aos="fade-up" data-aos-duration="800" class="text-4xl font-extrabold dark:text-white text-slate-900 mb-12 text-center">Certificates</h2>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <template x-for="(certificate, index) in certificates" :key="index">
-                    <div data-aos="fade-up" @click="openCertificateModal(certificate)" class="glass p-4 rounded-[2rem] text-center hover:border-pink-500/50 transition active:scale-95 group overflow-hidden cursor-pointer">
-                        <div class="rounded-[1.5rem] overflow-hidden mb-5 bg-black/20 aspect-[4/3] relative">
-                            <img :src="certificate.image" :alt="certificate.title" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        </div>
-                        <h3 class="font-bold dark:text-white" x-text="certificate.title"></h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed" x-text="certificate.desc"></p>
+        <div data-aos="fade-up" data-aos-duration="900" class="certificate-carousel">
+          <button class="certificate-nav left" @click="prevCertificate()">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+
+          <template x-for="(certificate,i) in certificates" :key="certificate.title">
+            <div class="certificate-card"
+                 :class="certificatePosition(i,certificateIndex)"
+                 :style="i===certificateIndex ? 'pointer-events:auto;cursor:pointer;' : 'pointer-events:none;'"
+                 @click="i===certificateIndex && openCertificateFullscreen(certificate.image)">
+
+                <div class="certificate-card-inner p-6 flex flex-col items-center text-center">
+
+                    <div class="certificate-image-frame mb-6 w-full">
+                        <img :src="certificate.image"
+                             alt=""
+                             @error="$el.style.display='none'">
+
+                        <button 
+                            @click.stop="openCertificateFullscreen(certificate.image)"
+                            class="certificate-fullscreen-btn">
+                            <i class="fas fa-expand"></i>
+                        </button>
+
+                        
                     </div>
-                </template>
+
+                    <h3 class="text-xl font-bold dark:text-white text-slate-900"
+                        x-text="certificate.title"></h3>
+
+                    <p class="mt-4 text-sm leading-relaxed dark:text-white/70 text-slate-600 max-w-md"
+                       x-text="certificate.desc"></p>
+
+                </div>
             </div>
+          </template>
+
+          <button class="certificate-nav right" @click="nextCertificate()">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
         </div>
+      </div>
     </section>
 
-    <!-- Certificate Modal -->
-    <div x-show="certificateModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-white/98 dark:bg-black/98 backdrop-blur-xl" x-transition x-cloak>
-        <button @click="certificateModalOpen = false" class="absolute top-8 right-8 text-slate-900 dark:text-white text-5xl hover:text-purple-400 transition active:scale-75 z-[120]">
+    <!-- CERTIFICATE FULLSCREEN -->
+    <div x-show="certificateFullscreenOpen"
+         x-cloak
+         class="fixed inset-0 z-[250] bg-black/95 backdrop-blur-xl flex items-center justify-center p-6">
+
+        <button @click="certificateFullscreenOpen=false"
+                class="absolute top-6 right-6 text-white text-5xl hover:text-pink-400 transition">
             <i class="fas fa-times-circle"></i>
         </button>
 
-        <div class="max-w-7xl w-full h-full flex flex-col lg:flex-row gap-12 pt-20 lg:pt-0 overflow-y-auto" @click.away="certificateModalOpen = false">
-            <div class="w-full lg:w-2/3 flex items-center justify-center overflow-y-auto space-y-6 pr-4">
-                <div class="glass p-2 rounded-3xl relative group">
-                    <img :src="activeCertificate.image" :alt="activeCertificate.title" class="w-full h-auto rounded-2xl shadow-xl">
-                </div>
-            </div>
-
-            <div class="w-full lg:w-1/3 text-left">
-                <span class="text-pink-500 font-bold tracking-widest uppercase text-[10px]">Certificate</span>
-                <h3 class="text-4xl font-extrabold dark:text-white text-slate-900 mt-4 mb-6" x-text="activeCertificate.title"></h3>
-                <div class="rounded-[1.5rem] bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-white/10 p-5 mb-10">
-                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg font-light" x-text="activeCertificate.desc"></p>
-            </div>
-
-                <h4 class="text-slate-900 dark:text-white font-bold uppercase text-xs tracking-widest mb-4">Focus Area</h4>
-                <div class="flex flex-wrap gap-2">
-                    <template x-for="skill in activeCertificate.skills">
-                        <span class="px-4 py-2 bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-pink-500/30 rounded-full text-[11px] font-bold text-pink-500 shadow-sm" x-text="skill"></span>
-                    </template>
-                </div>
-            </div>
-        </div>
+        <img :src="fullscreenImage"
+             class="max-w-full max-h-full object-contain rounded-2xl">
     </div>
 
     <!-- FAQ -->
-    <section id="faq" class="py-32 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="faq" class="py-32 px-6">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 text-center mb-16" data-aos="fade-up">Frequently Asked Questions</h2>
             <div class="space-y-3">
@@ -1121,7 +1420,7 @@ section {
     </section>
 
     <!-- Discovery Call -->
-    <section id="discovery-call" class="py-24 px-6 bg-slate-50/50 dark:bg-black/10">
+    <section id="discovery-call" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-extrabold dark:text-white text-slate-900 mb-12" data-aos="fade-up">
                 Ready to remove operational <span class="gradient-text">friction?</span>
@@ -1185,7 +1484,7 @@ section {
     </section>
 
     <!-- Footer / Contact -->
-     <section id="connect" class="py-24 px-6 bg-slate-50/50 dark:bg-black/10">  
+     <section id="connect" class="py-24 px-6">  
     <footer class="relative py-24 overflow-hidden">
 
     <div class="max-w-7xl mx-auto px-6">
@@ -1343,7 +1642,7 @@ section {
      class="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-6">
 
     <button 
-    @click="fullscreenOpen = false; modalOpen = true"
+    @click="closeFullscreenViewer()"
     class="absolute top-6 right-6 text-white text-5xl hover:text-purple-400 transition z-[210]">
 
     <i class="fas fa-times-circle"></i>
@@ -1364,10 +1663,65 @@ section {
                 fullscreenImage: '',
                 fullscreenOpen: false,
                 certificateModalOpen: false,
-                activeCertificate: {},
+                certificateFullscreenOpen:false,
+                activeCertificate: null,
                 workflowStep: 1,
-                
-                 init() {
+                automationIndex: 0,
+                certificateIndex: 0,
+                automationGalleryOpen: false,
+                automationProjectOpen: false,
+                selectedPlatform: null,
+                selectedProject: null,
+                projectImageIndex: 0,
+                activeModal:'none',
+                modalHistory:[],
+                certificateImageIndex:0,
+
+
+                automationGroups: [
+                    {
+                        platform:'n8n',
+                        logo:'n8n1-logo.png',
+                        description:'AI workflow automation platform for intelligent business systems.',
+                        projects:[
+                            {title:'AI Agent for Facebook', images:['6. AI Agent for Facebook (n8n 1).png'], summary:'AI customer support and response automation.', problem:'Manual Facebook responses create delays and inconsistent customer handling.', how:'n8n connects Facebook messages with AI models and memory workflows.', solution:'Automated AI-powered customer communication system.', tools:['n8n','Facebook Graph API','Google Gemini']},
+                            {title:'AI Jobs Scraper + Resume Optimizer', images:['7. AI Jobs Scraper + Resume Optimizer (n8n 2).png'], summary:'AI job search and resume optimization workflow.', problem:'Searching and customizing applications manually consumes time.', how:'The workflow collects jobs, analyzes requirements, and generates optimized resumes.', solution:'Automated job discovery and application preparation system.', tools:['n8n','RapidAPI','OpenRouter','Google Docs']},
+                            {title:'ASMR Remake', images:['8. ASMR Remake (n8n 3).png'], summary:'AI content creation pipeline.', problem:'Content production requires repetitive manual steps.', how:'AI generates scripts, assets, and publishing workflows.', solution:'Automated short-form content production.', tools:['n8n','Google Gemini AI','YouTube API']},
+                            {title:'AI Receptionist', images:['9. AI Receptionist (n8n 4).png'], summary:'Voice AI appointment automation.', problem:'Manual appointment scheduling causes missed opportunities.', how:'Voice AI handles calls, calendars, and customer requests.', solution:'Automated booking assistant.', tools:['n8n','Vapi AI','Google Calendar','Airtable']},
+                            {title:'RAG Agent', images:['10. RAG Agent (n8n 5).png'], summary:'Document intelligence AI workflow.', problem:'Finding internal information manually is inefficient.', how:'Documents are processed through retrieval augmented generation.', solution:'AI knowledge assistant using company data.', tools:['n8n','Supabase','Google Gemini AI']}
+                        ]
+                    },
+                    {
+                        platform:'HighLevel',
+                        logo:'ghl1-logo.png',
+                        description:'CRM, pipeline, and lead follow-up automation.',
+                        projects:[
+                            {title:'Lead Capture with Instant Follow-ups', images:['ghl-landing-page.png','ghl-workflow.png','ghl-pipeline.png','ghl-follow-up.png','ghl-contact.png'], summary:'Complete lead capture and automated follow-up system.', problem:'Leads can be lost without immediate response.', how:'Forms, CRM pipelines, workflows, and follow-ups are connected.', solution:'Automated lead nurturing system.', tools:['HighLevel','CRM','Funnels','Workflow Automation','AI Agents']}
+                        ]
+                    },
+                    {
+                        platform:'Zapier',
+                        logo:'zapier1-logo.png',
+                        description:'No-code automation workflows.',
+                        projects:[
+                            {title:'AI Content Repurposing',images:['1. AI Content Repurposing (Zapier 1).png'],summary:'Transforms content into multiple assets.',problem:'Manual repurposing slows publishing.',how:'Zapier connects AI tools with publishing workflows.',solution:'Automated content distribution.',tools:['Zapier','OpenRouter','Social APIs']},
+                            {title:'Asana CRM Lead Engagement Workflow',images:['2. Asana CRM Lead Engagement Workflow (Zapier 2).png'],summary:'CRM task and engagement automation.',problem:'Sales follow-ups require manual tracking.',how:'Leads trigger Asana tasks and communication flows.',solution:'Structured sales workflow.',tools:['Zapier','Asana','Gmail']},
+                            {title:'Automated Lead Enrichment',images:['3. Automated Lead Enrichment (Zapier 3).png'],summary:'Automated prospect enrichment.',problem:'Incomplete lead data affects sales.',how:'Lead information is enriched and routed automatically.',solution:'Better qualified leads.',tools:['Zapier','Apollo','Slack']}
+                        ]
+                    },
+                    {
+                        platform:'Make.com',
+                        logo:'make1-logo.png',
+                        description:'Visual automation scenarios.',
+                        projects:[
+                            {title:'Xero Transactions Asana',images:['4. Xero Transactions Asana (Make.com 1).png'],summary:'Accounting workflow automation.',problem:'Financial data transfer is repetitive.',how:'Make connects Xero transactions with Asana workflows.',solution:'Automated financial task management.',tools:['Make.com','Xero','Asana']},
+                            {title:'Auto Sort Gmail Attachments on Drive',images:['5. Auto Sort Gmail Attachments on Drive (Make.com 2).png'],summary:'Smart document organization.',problem:'Manual file sorting wastes time.',how:'Attachments are detected, renamed, and stored automatically.',solution:'Organized document workflow.',tools:['Make.com','Gmail','Google Drive']}
+                        ]
+                    }
+                ],
+
+
+                init() {
                 this.darkMode = localStorage.getItem('darkMode') === 'true';
                 },
                 
@@ -1379,12 +1733,15 @@ section {
                 openFullscreen(img) {
                     this.fullscreenImage = img;
                     this.fullscreenOpen = true;
-                    this.modalOpen = true;
+                    this.modalHistory.push(this.activeModal || 'projectViewer');
+                    this.activeModal='fullscreenImage';
                 },
 
                 openCertificateModal(certificate) {
                     this.activeCertificate = certificate;
                     this.certificateModalOpen = true;
+                    this.activeModal='certificateViewer';
+                    this.activeCertificate=certificate;
                 },
 
                 copyToClipboard(text) {
@@ -1401,6 +1758,8 @@ section {
                 },
 
                 certificates: [
+                    {title:'HighLevel CRM Full Training', image:'Jessa_Sabian_HighLevel.png', issuedBy:'Tara AI Community+', completed:'July 18, 2026', desc:'Completed HighLevel CRM full training covering CRM management, pipeline management, sales funnels, website builder, forms, email marketing, booking systems, workflow automation, API integration, courses, reputation management, analytics, communities, document signing, and AI agents.', skills:['HighLevel CRM','Pipeline Management','Sales Funnels','Workflow Automation','API Integration','AI Agents']},
+
                     { title: 'AI Automation with n8n', image: 'AI Automation with n8n.png', desc: 'Training focused on workflow automation, AI agents, app integrations, and backend systems using n8n.', skills: ['n8n', 'AI Automation', 'Workflow Design'] },
                     { title: 'No Code Automation with Zapier', image: 'No Code Automation with Zapier.png', desc: 'Training focused on building no-code automations, triggers, actions, and business process integrations using Zapier.', skills: ['Zapier', 'No-Code Automation', 'App Integrations'] },
                     { title: 'No Code Automation with Make.com', image: 'No Code Automation with Make.com.png', desc: 'Training focused on visual automation scenarios, routers, modules, and scalable process workflows using Make.com.', skills: ['Make.com', 'Scenario Building', 'Process Automation'] },
@@ -1420,6 +1779,87 @@ section {
                     { title: 'AI-Powered RAG Workflow', tool: 'n8n Automation', desc: 'A retrieval-augmented generation system that allows businesses to query internal documents using vector search.', images: ['10. RAG Agent (n8n 5).png'], apps: ['n8n', 'Supabase Vector Store', 'Google Gemini AI'] },
                     { title: 'Automated Certification Engine', tool: 'n8n Automation', desc: 'A bulk certificate generation system that creates custom PDFs from sheets and distributes them through email.', images: ['11. E-cert Generator (n8n 6).png'], apps: ['n8n', 'Google Sheets', 'Google Slides', 'Gmail'] }
                 ],
+
+                carouselClickable(i,current){
+                    return i===current ? 'pointer-events:auto;' : 'pointer-events:none;';
+                },
+
+                carouselPosition(i,current){
+                    let total=this.automationGroups.length;
+                    let diff=(i-current+total)%total;
+                    if(diff===0) return 'stack-active';
+                    if(diff===1) return 'stack-next';
+                    if(diff===total-1) return 'stack-prev';
+                    return 'stack-hidden';
+                },
+
+                nextAutomation(){
+                    this.automationIndex=(this.automationIndex+1)%this.automationGroups.length;
+                },
+
+                prevAutomation(){
+                    this.automationIndex=(this.automationIndex-1+this.automationGroups.length)%this.automationGroups.length;
+                },
+
+                nextCertificate(){
+                    this.certificateIndex=(this.certificateIndex+1)%this.certificates.length;
+                },
+
+                prevCertificate(){
+                    this.certificateIndex=(this.certificateIndex-1+this.certificates.length)%this.certificates.length;
+                },
+
+                certificatePosition(i,current){
+                    let total=this.certificates.length;
+                    let diff=(i-current+total)%total;
+                    if(diff===0) return 'certificate-active';
+                    if(diff===1) return 'certificate-next';
+                    if(diff===total-1) return 'certificate-prev';
+                    return 'certificate-hidden';
+                },
+
+                openAutomationGallery(group){
+                    this.selectedPlatform=group;
+                    this.automationGalleryOpen=true;
+                    this.automationProjectOpen=false;
+                    this.activeModal='platformGallery';
+                },
+
+                openAutomationProject(project){
+                    this.selectedProject=project;
+                    this.projectImageIndex=0;
+                    this.automationProjectOpen=true;
+                    this.automationGalleryOpen=false;
+                    this.activeModal='projectViewer';
+                },
+
+                closePlatformGallery(){
+                    this.automationGalleryOpen=false;
+                    this.automationProjectOpen=false;
+                    this.activeModal='none';
+                    this.selectedPlatform=null;
+                },
+
+                closeProjectViewer(){
+                    this.automationProjectOpen=false;
+                    this.automationGalleryOpen=true;
+                    this.activeModal='platformGallery';
+                },
+
+                closeFullscreenViewer(){
+                    this.fullscreenOpen=false;
+                    this.activeModal=this.modalHistory.pop() || 'projectViewer';
+                },
+
+                closeCertificateViewer(){
+                    this.certificateModalOpen=false;
+                    this.activeModal='none';
+                },
+
+                openCertificateFullscreen(img){
+                    this.fullscreenImage=img;
+                    this.certificateFullscreenOpen=true;
+                },
 
                 openModal(project) { 
                     this.activeProject = project; 
@@ -1446,6 +1886,12 @@ section {
             setTimeout(() => ripple.remove(), 600);
         });
 
+        window.addEventListener('keydown',(e)=>{
+            if(e.key==='Escape'){
+                const app=document.querySelector('[x-data]');
+                if(app && app.__x){ app.__x.$data.closeFullscreenViewer(); }
+            }
+        });
         AOS.init({ duration: 1000, once: true, offset: 120, easing: 'ease-out-cubic' });
     </script>
 </body>
